@@ -26,7 +26,34 @@ namespace SistemaVenta.BLL.Implementacion
         {
             try
             {
-                IQueryable<Configuracion> query = await _repositorio.Consultar(c => c.Recurso.Equals("Servicio_Correo"))
+                IQueryable<Configuracion> query = await _repositorio.Consultar(c => c.Recurso.Equals("Servicio_Correo"));
+
+                Dictionary<string, string> Config = query.ToDictionary(keySelector: c => c.Propiedad, elementSelector: c => c.Valor);
+
+                var credenciales = new NetworkCredential(Config["correo"], Config["clave"]);
+
+                var correo = new MailMessage()
+                {
+                    From = new MailAddress(Config["correo"], Config["alias"]),
+                    Subject = Asunto,
+                    Body = Mensaje,
+                    IsBodyHtml = true
+
+                };
+
+                correo.To.Add(new MailAddress(CorreoDestino));
+
+                var clienteServidor = new SmtpClient()
+                {
+                    Host = Config["host"],
+                    Port = int.Parse(Config["puerto"]),
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    EnableSsl = true
+                };
+
+                clienteServidor.Send(correo);
+                return true;
 
             }
             catch 

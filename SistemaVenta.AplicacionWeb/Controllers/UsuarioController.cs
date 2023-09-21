@@ -34,14 +34,14 @@ namespace SistemaVenta.AplicacionWeb.Controllers
         [HttpGet]
         public async Task<IActionResult> ListaRoles()
         {
-            var lista = ;
+            // SE ELIMINO ESTA LINEA var lista = ;
             List<VMRol>vmListaRoles = _mapper.Map<List<VMRol>>(await _rolServicio.Lista());
             return StatusCode(StatusCodes.Status200OK, vmListaRoles);
         }
         [HttpGet]
         public async Task<IActionResult> Lista()
         {
-            var lista = ;
+            // SE ELIMINO ESTA LINEA var lista = ;
             List<VMUsuario> vmUsuarioLista = _mapper.Map<List<VMUsuario>>(await _usuarioServicio.Lista());
             return StatusCode(StatusCodes.Status200OK, new { data = vmUsuarioLista }) ;
         }
@@ -49,7 +49,7 @@ namespace SistemaVenta.AplicacionWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> Crear([FromForm]IFormFile foto, [FromForm]string modelo)
         {
-            GenericResponse<VMUsuario> gResponse = GenericResponse<VMUsuario>();
+            GenericResponse<VMUsuario> gResponse = new GenericResponse<VMUsuario>();
             try
             {
                 VMUsuario vmUsuario = JsonConvert.DeserializeObject<VMUsuario>(modelo);
@@ -64,11 +64,11 @@ namespace SistemaVenta.AplicacionWeb.Controllers
                     nombreFoto = string.Concat(nombre_en_codigo, extension);
                     fotoStream = foto.OpenReadStream();
                 }
-                string urlPlantillaCorreo = $"{this.Request.Scheme}://{this.Request.Host}/Plantilla/EnviarClave?correo=[correo]&clave=[clave}";
+                string urlPlantillaCorreo = $"{this.Request.Scheme}://{this.Request.Host}/Plantilla/EnviarClave?correo=[correo]&clave=[clave]";
 
                 Usuario usuario_creado = await _usuarioServicio.Crear(_mapper.Map<Usuario>(vmUsuario), fotoStream, nombreFoto, urlPlantillaCorreo);
 
-                VMUsuario = _mapper.Map<VMUsuario>(usuario_creado);
+                vmUsuario = _mapper.Map<VMUsuario>(usuario_creado);
                 gResponse.Estado = true;
                 gResponse.Objeto = vmUsuario;
 
@@ -86,7 +86,7 @@ namespace SistemaVenta.AplicacionWeb.Controllers
         [HttpPut]
         public async Task<IActionResult> Editar([FromForm] IFormFile foto, [FromForm] string modelo)
         {
-            GenericResponse<VMUsuario> gResponse = GenericResponse<VMUsuario>();
+            GenericResponse<VMUsuario> gResponse = new GenericResponse<VMUsuario>();
             try
             {
                 VMUsuario vmUsuario = JsonConvert.DeserializeObject<VMUsuario>(modelo);
@@ -104,7 +104,7 @@ namespace SistemaVenta.AplicacionWeb.Controllers
 
                 Usuario usuario_editado = await _usuarioServicio.Editar(_mapper.Map<Usuario>(vmUsuario), fotoStream, nombreFoto);
 
-                VMUsuario = _mapper.Map<VMUsuario>(usuario_editado);
+                vmUsuario = _mapper.Map<VMUsuario>(usuario_editado);
                 gResponse.Estado = true;
                 gResponse.Objeto = vmUsuario;
 
@@ -134,7 +134,7 @@ namespace SistemaVenta.AplicacionWeb.Controllers
                 gResponse.Estado = false;
                 gResponse.Mensaje = ex.Message;
             }
-            return StatusCode(StatusCode.Status200OK, gResponse);
+            return StatusCode(StatusCodes.Status200OK, gResponse);
         }
 
 

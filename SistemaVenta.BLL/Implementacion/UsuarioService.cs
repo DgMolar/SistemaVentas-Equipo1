@@ -67,7 +67,7 @@ namespace SistemaVenta.BLL.Implementacion
 
                 if(UrlPlantillaCorreo != "")
                 {
-                    UrlPlantillaCorreo = UrlPlantillaCorreo.Replace("[correo]", usuario_creado.Correo).Replace("[clave", clave_generada);
+                    UrlPlantillaCorreo = UrlPlantillaCorreo.Replace("[correo]", usuario_creado.Correo).Replace("[clave]", clave_generada);
 
                     string htmlCorreo = "";
 

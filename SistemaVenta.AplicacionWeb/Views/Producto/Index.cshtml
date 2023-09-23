@@ -1,15 +1,17 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Producto";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 @section Estilos{
     <!-- ============================================================
     =ESTILOS PARA ESTA PAGINA
     ===============================================================-->
-    <link rel="~/stylesheet" href="vendor/datatables/dataTables.bootstrap4.min.css">
-    <link rel="~/stylesheet" href="vendor/datatables/extensiones/css/responsive.dataTables.min.css">
-    <link rel="~/stylesheet" href="vendor/datatables/extensiones/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="~/vendor/datatables/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/vendor/datatables/extensiones/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="~/vendor/datatables/extensiones/css/buttons.dataTables.min.css">
+
 }
 
     <!-- DataTales Example -->
@@ -166,7 +168,7 @@
     </div>
 
 
-                                @section Scripts{
+@section Scripts{
     <!-- ============================================================
     =SCRIPTS PARA ESTA PAGINA
     ===============================================================-->
@@ -182,4 +184,4 @@
 
     <!-- SOLO ES DE EJEMPLO - IGNORAR -->
     <script src="~/js/vistas/datatables-demo.js"></script>
-                                }
+}

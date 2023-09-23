@@ -13,9 +13,9 @@ namespace SistemaVenta.DAL.Implementacion
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private readonly DbventaContext _dbContext;
+        private readonly DBVENTAContext _dbContext;
 
-        public GenericRepository(DbventaContext dbContext)
+        public GenericRepository(DBVENTAContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -27,7 +27,8 @@ namespace SistemaVenta.DAL.Implementacion
                 TEntity entidad = await _dbContext.Set<TEntity>().FirstOrDefaultAsync(filtro);
                 return entidad;
             }
-            catch {
+            catch
+            {
                 throw;
             }
         }
@@ -73,12 +74,13 @@ namespace SistemaVenta.DAL.Implementacion
                 throw;
             }
         }
-
         public async Task<IQueryable<TEntity>> Consultar(Expression<Func<TEntity, bool>> filtro = null)
         {
-            IQueryable<TEntity> queryEntidad = filtro == null ? _dbContext.Set<TEntity>(): _dbContext.Set<TEntity>().Where(filtro);
+            IQueryable<TEntity> queryEntidad = filtro == null ? _dbContext.Set<TEntity>() : _dbContext.Set<TEntity>().Where(filtro);
             return queryEntidad;
         }
+
+
 
     }
 }

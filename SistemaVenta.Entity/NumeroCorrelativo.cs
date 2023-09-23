@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SistemaVenta.Entity;
-
-public partial class NumeroCorrelativo
+namespace SistemaVenta.Entity
 {
-    public int IdNumeroCorrelativo { get; set; }
-
-    public int? UltimoNumero { get; set; }
-
-    public int? CantidadDigitos { get; set; }
-
-    public string? Gestion { get; set; }
-
-    public DateTime? FechaActualizacion { get; set; }
+    public partial class NumeroCorrelativo
+    {
+        public int IdNumeroCorrelativo { get; set; }
+        public int? UltimoNumero { get; set; }
+        public int? CantidadDigitos { get; set; }
+        public string? Gestion { get; set; }
+        public DateTime? FechaActualizacion { get; set; }
+    }
 }

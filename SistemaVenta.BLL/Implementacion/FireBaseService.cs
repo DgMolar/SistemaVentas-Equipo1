@@ -12,7 +12,7 @@ using SistemaVenta.DAL.Interfaces;
 
 namespace SistemaVenta.BLL.Implementacion
 {
-    public class FireBaseService : IFireBaseServices
+    public class FireBaseService : IFireBaseService
     {
         private readonly IGenericRepository<Configuracion> _repositorio;
 
@@ -31,6 +31,7 @@ namespace SistemaVenta.BLL.Implementacion
 
                 Dictionary<string, string> Config = query.ToDictionary(keySelector: c => c.Propiedad, elementSelector: c => c.Valor);
 
+
                 var auth = new FirebaseAuthProvider(new FirebaseConfig(Config["api_key"]));
                 var a = await auth.SignInWithEmailAndPasswordAsync(Config["email"], Config["clave"]);
 
@@ -48,13 +49,12 @@ namespace SistemaVenta.BLL.Implementacion
                     .PutAsync(StreamArchivo, cancellation.Token);
 
                 UrlImagen = await task;
-
             }
-            catch 
+            catch
             {
                 UrlImagen = "";
-
             }
+
             return UrlImagen;
         }
 
@@ -65,6 +65,7 @@ namespace SistemaVenta.BLL.Implementacion
                 IQueryable<Configuracion> query = await _repositorio.Consultar(c => c.Recurso.Equals("FireBase_Storage"));
 
                 Dictionary<string, string> Config = query.ToDictionary(keySelector: c => c.Propiedad, elementSelector: c => c.Valor);
+
 
                 var auth = new FirebaseAuthProvider(new FirebaseConfig(Config["api_key"]));
                 var a = await auth.SignInWithEmailAndPasswordAsync(Config["email"], Config["clave"]);
@@ -85,14 +86,13 @@ namespace SistemaVenta.BLL.Implementacion
                 await task;
 
                 return true;
-
             }
             catch
             {
                 return false;
-
             }
         }
+
 
     }
 }

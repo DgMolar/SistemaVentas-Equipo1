@@ -8,6 +8,7 @@ namespace SistemaVenta.AplicacionWeb.Controllers
         {
             return View();
         }
+
         public IActionResult HistorialVenta()
         {
             return View();

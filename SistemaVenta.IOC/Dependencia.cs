@@ -10,33 +10,31 @@ using SistemaVenta.DAL.DBContext;
 using Microsoft.EntityFrameworkCore;
 using SistemaVenta.DAL.Interfaces;
 using SistemaVenta.DAL.Implementacion;
-using SistemaVenta.BLL.Implementacion;
 using SistemaVenta.BLL.Interfaces;
+using SistemaVenta.BLL.Implementacion;
 
 namespace SistemaVenta.IOC
 {
     public static class Dependencia
     {
-        public static void InyectarDependencia(this IServiceCollection services, IConfiguration configuration)
-        {
 
-            services.AddDbContext<DbventaContext>(options =>
+        public static void InyectarDependencia(this IServiceCollection services, IConfiguration Configuration) {
+
+            services.AddDbContext<DBVENTAContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("CadenaSQL"));
+                options.UseSqlServer(Configuration.GetConnectionString("CadenaSQL"));
             });
 
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IVentaRepository, VentaRepository>();
 
             services.AddScoped<ICorreoService, CorreoService>();
-            services.AddScoped<IFireBaseServices, FireBaseService>();
+            services.AddScoped<IFireBaseService, FireBaseService>();
 
-
-
-            services.AddScoped<IUtilidadesService,UtilidadesService >();
+            services.AddScoped<IUtilidadesService, UtilidadesService>();
             services.AddScoped<IRolService, RolService>();
 
-
+            services.AddScoped<IUsuarioService, UsuarioService>();
         }
     }
 }

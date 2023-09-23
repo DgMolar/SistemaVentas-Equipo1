@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 using SistemaVenta.BLL.Interfaces;
 using SistemaVenta.DAL.Interfaces;
 using SistemaVenta.Entity;
@@ -16,13 +17,16 @@ namespace SistemaVenta.BLL.Implementacion
 
         public RolService(IGenericRepository<Rol> repositorio)
         {
-            _repositorio = repositorio; 
+            _repositorio = repositorio;
         }
+
         public async Task<List<Rol>> Lista()
         {
+
             IQueryable<Rol> query = await _repositorio.Consultar();
 
             return query.ToList();
+
         }
     }
 }

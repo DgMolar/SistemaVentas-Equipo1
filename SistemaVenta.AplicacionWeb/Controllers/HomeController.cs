@@ -22,7 +22,6 @@ namespace SistemaVenta.AplicacionWeb.Controllers
         {
             return View();
         }
-
         public IActionResult Perfil()
         {
             return View();

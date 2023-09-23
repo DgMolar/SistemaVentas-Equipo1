@@ -38,7 +38,6 @@ namespace SistemaVenta.BLL.Implementacion
                     Subject = Asunto,
                     Body = Mensaje,
                     IsBodyHtml = true
-
                 };
 
                 correo.To.Add(new MailAddress(CorreoDestino));
@@ -47,6 +46,7 @@ namespace SistemaVenta.BLL.Implementacion
                 {
                     Host = Config["host"],
                     Port = int.Parse(Config["puerto"]),
+                    Credentials = credenciales,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
                     EnableSsl = true
@@ -54,9 +54,8 @@ namespace SistemaVenta.BLL.Implementacion
 
                 clienteServidor.Send(correo);
                 return true;
-
             }
-            catch 
+            catch
             {
                 return false;
             }

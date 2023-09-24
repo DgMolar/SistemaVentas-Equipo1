@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tv9ReCzetRqnL6iUga62BDA0hH2FttR1LYcaR3ZdgMMPKcsKXLEw+5NPLU8DMHuJtgjum0ilFfNDOK7IfeIp1w==",
+  "dgSpecHash": "Uj+sC3IFCyZpVujvxChlThxCJZkvCmW6drx1GLTQzj9YAECXgSxnHa/qjzqySAu2Jdm+AdKVuxW+oLtIO/7IYw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\diego\\source\\repos\\DgMolar\\ProyectoVentasPI\\SistemaVenta.AplicacionWeb\\SistemaVenta.AplicacionWeb.csproj",
+  "projectFilePath": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\SistemaVenta.AplicacionWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\diego\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

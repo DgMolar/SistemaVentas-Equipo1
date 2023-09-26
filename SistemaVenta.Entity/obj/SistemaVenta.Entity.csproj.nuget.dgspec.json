@@ -11,7 +11,7 @@
         "projectName": "SistemaVenta.Entity",
         "projectPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj",
         "packagesPath": "C:\\Users\\Erik Torres\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\obj\\",
+        "outputPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Erik Torres\\AppData\\Roaming\\NuGet\\NuGet.Config",

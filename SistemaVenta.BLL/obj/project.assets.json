@@ -6657,7 +6657,7 @@
       "projectName": "SistemaVenta.BLL",
       "projectPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj",
       "packagesPath": "C:\\Users\\Erik Torres\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\obj\\",
+      "outputPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Erik Torres\\AppData\\Roaming\\NuGet\\NuGet.Config",

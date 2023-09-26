@@ -11,7 +11,7 @@
         "projectName": "SistemaVenta.BLL",
         "projectPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj",
         "packagesPath": "C:\\Users\\Erik Torres\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\obj\\",
+        "outputPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Erik Torres\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -87,7 +87,7 @@
         "projectName": "SistemaVenta.DAL",
         "projectPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
         "packagesPath": "C:\\Users\\Erik Torres\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\obj\\",
+        "outputPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Erik Torres\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -146,7 +146,7 @@
         "projectName": "SistemaVenta.Entity",
         "projectPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj",
         "packagesPath": "C:\\Users\\Erik Torres\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\obj\\",
+        "outputPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Erik Torres\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -213,7 +213,7 @@
         "projectName": "SistemaVenta.IOC",
         "projectPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.IOC\\SistemaVenta.IOC.csproj",
         "packagesPath": "C:\\Users\\Erik Torres\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.IOC\\obj\\",
+        "outputPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.IOC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Erik Torres\\AppData\\Roaming\\NuGet\\NuGet.Config",

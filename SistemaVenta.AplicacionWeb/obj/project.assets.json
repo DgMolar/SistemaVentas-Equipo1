@@ -10987,11 +10987,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\SistemaVenta.AplicacionWeb.csproj",
+      "projectUniqueName": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\SistemaVenta.AplicacionWeb.csproj",
       "projectName": "SistemaVenta.AplicacionWeb",
-      "projectPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\SistemaVenta.AplicacionWeb.csproj",
+      "projectPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\SistemaVenta.AplicacionWeb.csproj",
       "packagesPath": "C:\\Users\\Erik Torres\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\obj\\",
+      "outputPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Erik Torres\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -11008,14 +11008,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj": {
-              "projectPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj"
+            "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj": {
+              "projectPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj"
             },
-            "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj": {
-              "projectPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj"
+            "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj": {
+              "projectPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj"
             },
-            "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.IOC\\SistemaVenta.IOC.csproj": {
-              "projectPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.IOC\\SistemaVenta.IOC.csproj"
+            "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.IOC\\SistemaVenta.IOC.csproj": {
+              "projectPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.IOC\\SistemaVenta.IOC.csproj"
             }
           }
         }

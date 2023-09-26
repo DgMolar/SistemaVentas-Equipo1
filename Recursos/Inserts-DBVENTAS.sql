@@ -60,3 +60,17 @@ INSERT INTO Categoria(descripcion,esActivo) values
 ('Teclados',1),
 ('Monitores',1),
 ('Microfonos',1)
+
+--_________________________________VIDEO 20______________________________________--
+--________________________________ INSERTAR Tipos de ventas y Numeros Correlativos________________________________
+
+select * from Usuario
+
+select * from TipoDocumentoVenta
+insert into TipoDocumentoVenta(descripcion,esActivo) values
+('Boleta',1),
+('Factura',1)
+
+select * from NumeroCorrelativo
+insert into NumeroCorrelativo(ultimoNumero,cantidadDigitos,gestion,fechaActualizacion) values
+(0,6,'venta',getdate())

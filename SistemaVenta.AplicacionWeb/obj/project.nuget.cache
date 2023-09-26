@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Uj+sC3IFCyZpVujvxChlThxCJZkvCmW6drx1GLTQzj9YAECXgSxnHa/qjzqySAu2Jdm+AdKVuxW+oLtIO/7IYw==",
+  "dgSpecHash": "hxZaypkXdLAKJdJzzXq56AogPayDz571x2TzHcVas7Fj/fU6sxER3TyPp4wHVSNMCkDr7WJAUD911O9Pl+2vzg==",
   "success": true,
   "projectFilePath": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\SistemaVenta.AplicacionWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\diego\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\dinktopdf\\1.0.8\\dinktopdf.1.0.8.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\firebaseauthentication.net\\3.7.2\\firebaseauthentication.net.3.7.2.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\firebasedatabase.net\\4.2.0\\firebasedatabase.net.4.2.0.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\firebasestorage.net\\1.0.3\\firebasestorage.net.1.0.3.nupkg.sha512",
@@ -221,6 +222,7 @@
     "C:\\Users\\diego\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\system.threading.tasks.dataflow\\6.0.0\\system.threading.tasks.dataflow.6.0.0.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\system.threading.thread\\4.0.0\\system.threading.thread.4.0.0.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",

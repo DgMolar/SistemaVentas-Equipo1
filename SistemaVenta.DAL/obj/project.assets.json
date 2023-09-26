@@ -1933,9 +1933,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
       "projectName": "SistemaVenta.DAL",
-      "projectPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
+      "projectPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
       "packagesPath": "C:\\Users\\Erik Torres\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\obj\\",
       "projectStyle": "PackageReference",
@@ -1954,8 +1954,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj": {
-              "projectPath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj"
+            "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj": {
+              "projectPath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj"
             }
           }
         }

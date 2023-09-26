@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XmwIGDcHVqiFybuf/N73Z1QdaKLHVI1PGC9k4b2DJ6mlFQch9uyo4BqQ1LcFMLHkNMx5hUiZUQmMC3fNklECrQ==",
+  "dgSpecHash": "8Q0YCuquLTZiGPhZGgWSoEfKQkn3/icvolBmf2J4QQ93EJprJOlihIfUGvw8v/I7jZdA3Hpm/GfVvv0EI0gPzA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Erik Torres\\source\\repos\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
+  "projectFilePath": "C:\\Users\\Erik Torres\\Source\\Repos\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Erik Torres\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Erik Torres\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

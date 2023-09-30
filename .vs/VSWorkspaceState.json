@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Recursos",
+    "\\Recursos\\Components",
+    "\\SistemaVenta.AplicacionWeb",
+    "\\SistemaVenta.AplicacionWeb\\Views",
+    "\\SistemaVenta.AplicacionWeb\\Views\\DashBoard"
   ],
+  "SelectedNode": "\\SistemaVenta.AplicacionWeb\\Views\\DashBoard\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }

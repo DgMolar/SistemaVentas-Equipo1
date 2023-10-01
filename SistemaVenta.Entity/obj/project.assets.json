@@ -2012,19 +2012,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {}
+    "C:\\Users\\Karen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\Source\\Repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj",
+      "projectUniqueName": "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj",
       "projectName": "SistemaVenta.Entity",
-      "projectPath": "C:\\Users\\DELL\\Source\\Repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\Source\\Repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\obj\\",
+      "projectPath": "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj",
+      "packagesPath": "C:\\Users\\Karen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Karen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

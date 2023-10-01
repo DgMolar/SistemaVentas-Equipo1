@@ -121,12 +121,12 @@ namespace SistemaVenta.BLL.Implementacion
             try
             {
                 IQueryable<DetalleVenta> query = await _repositorioDetalleVenta.Consultar();
-               
+
                 Dictionary<string, int> resultado = query
                     .Include(v => v.IdVentaNavigation)
                     .Where(dv => dv.IdVentaNavigation.FechaRegistro.Value.Date >= FechaInicio.Date)
                     .GroupBy(dv => dv.DescripcionProducto).OrderByDescending(g => g.Count())
-                    .Select(dv => new { producto = dv.Key, total = dv.Count() })
+                    .Select(dv => new { producto = dv.Key, total = dv.Count() }).Take(4)
                     .ToDictionary(keySelector: r => r.producto, elementSelector: r => r.total);
                 return resultado;
             }

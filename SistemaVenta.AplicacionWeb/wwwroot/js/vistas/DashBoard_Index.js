@@ -1,4 +1,5 @@
 ﻿
+
 $(document).ready(function () {
 
 
@@ -13,48 +14,39 @@ $(document).ready(function () {
 
             if (responseJson.estado) {
 
-                // Mostrar Datos para las tarjetas xd
-                let d = responseJson.objeto;
 
-                $("#totalVenta").text(d.totalVentas);
-                $("#totalIngresos").text(d.totalIngresos);
-                $("#totalProductos").text(d.totalProductos);
-                $("#totalCategorias").text(d.totalCategorias);
+                //mostrar datos para las tarjetas
+                let d = responseJson.objeto
 
-                // Obtener los textos para nuestro grafico de barras
+                $("#totalVenta").text(d.totalVentas)
+                $("#totalIngresos").text(d.totalIngresos)
+                $("#totalProductos").text(d.totalProductos)
+                $("#totalCategorias").text(d.totalCategorias)
+
+                //obtener textos y valores para nuestro grafico de barras
                 let barchart_labels;
                 let barchart_data;
 
                 if (d.ventasUltimaSemana.length > 0) {
-                    barchart_labels = d.ventasUltimaSemana.map((item) => {
-                        return item.fecha;
-                    });
-                    barchart_data = d.ventasUltimaSemana.map((item) => {
-                        return item.total;
-                    })
-
+                    barchart_labels = d.ventasUltimaSemana.map((item) => { return item.fecha })
+                    barchart_data = d.ventasUltimaSemana.map((item) => { return item.total })
                 } else {
-                    barchart_labels = ["sin resultados"];
-                    barchart_data = [0];
+                    barchart_labels = ["sin resultados"]
+                    barchart_data = [0]
                 }
 
 
-                // Obtener textos y valores para nuestro grafico de pie
+                //obtener textos y valores para nuestro grafico de pie
                 let piechar_labels;
                 let piechart_data;
-
                 if (d.productosTopUltimaSemana.length > 0) {
-                    piechar_labels = d.productosTopUltimaSemana.map((item) => {
-                        return item.producto;
-                    });
-                    piechart_data = d.productosTopUltimaSemana.map((item) => {
-                        return item.cantidad;
-                    })
-
+                    piechar_labels = d.productosTopUltimaSemana.map((item) => { return item.producto })
+                    piechart_data = d.productosTopUltimaSemana.map((item) => { return item.cantidad })
                 } else {
-                    piechar_labels = ["sin resultados"];
-                    piechart_data = [0];
+                    piechar_labels = ["sin resultados"]
+                    piechart_data = [0]
                 }
+
 
                 // Bar Chart Example
                 let controlVenta = document.getElementById("chartVentas");
@@ -93,43 +85,48 @@ $(document).ready(function () {
                     }
                 });
 
-            } 
+                // Pie Chart Example
+                let controlProducto = document.getElementById("chartProductos");
+                let myPieChart = new Chart(controlProducto, {
+                    type: 'doughnut',
+                    data: {
+                        labels: piechar_labels,
+                        datasets: [{
+                            data: piechart_data,
+                            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', "#FF785B"],
+                            hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', "#FF5733"],
+                            hoverBorderColor: "rgba(234, 236, 244, 1)",
+                        }],
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        tooltips: {
+                            backgroundColor: "rgb(255,255,255)",
+                            bodyFontColor: "#858796",
+                            borderColor: '#dddfeb',
+                            borderWidth: 1,
+                            xPadding: 15,
+                            yPadding: 15,
+                            displayColors: false,
+                            caretPadding: 10,
+                        },
+                        legend: {
+                            display: true
+                        },
+                        cutoutPercentage: 80,
+                    },
+                });
+
+
+
+
+
+
+            }
+
+
+
         })
-
-    // Pie Chart Example
-    let controlProducto = document.getElementById("chartProductos");
-    let myPieChart = new Chart(controlProducto, {
-        type: 'doughnut',
-        data: {
-            labels: piechar_labels,
-            datasets: [{
-                data: piechart_data,
-                backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', "#FF785B"],
-                hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', "#FF5733"],
-                hoverBorderColor: "rgba(234, 236, 244, 1)",
-            }],
-        },
-        options: {
-            maintainAspectRatio: false,
-            tooltips: {
-                backgroundColor: "rgb(255,255,255)",
-                bodyFontColor: "#858796",
-                borderColor: '#dddfeb',
-                borderWidth: 1,
-                xPadding: 15,
-                yPadding: 15,
-                displayColors: false,
-                caretPadding: 10,
-            },
-            legend: {
-                display: true
-            },
-            cutoutPercentage: 80,
-        },
-    });
-
 
 
 })
-
-

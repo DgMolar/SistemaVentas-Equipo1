@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj": {}
+    "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj": {
+    "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
         "projectName": "SistemaVenta.DAL",
-        "projectPath": "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
-        "packagesPath": "C:\\Users\\Karen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\obj\\",
+        "projectPath": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
+        "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.DAL\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Karen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj": {
-                "projectPath": "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj"
+              "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj": {
+                "projectPath": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj"
               }
             }
           }
@@ -63,17 +68,21 @@
         }
       }
     },
-    "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj": {
+    "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj",
+        "projectUniqueName": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj",
         "projectName": "SistemaVenta.Entity",
-        "projectPath": "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj",
-        "packagesPath": "C:\\Users\\Karen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Karen\\Desktop\\EMMA-PIB\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\obj\\",
+        "projectPath": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\SistemaVenta.Entity.csproj",
+        "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.Entity\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Karen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,6 +90,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

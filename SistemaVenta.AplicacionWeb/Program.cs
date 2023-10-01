@@ -2,6 +2,7 @@ using SistemaVenta.AplicacionWeb.Utilidades.Automapper;
 
 using SistemaVenta.IOC;
 
+
 using SistemaVenta.AplicacionWeb.Utilidades.Extensiones;
 using DinkToPdf;
 using DinkToPdf.Contracts;
@@ -46,6 +47,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Acceso}/{action=Logins}/{id?}");
+    pattern: "{controller=Acceso}/{action=Login}/{id?}");
 
 app.Run();

@@ -1,12 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Recursos",
     "\\Recursos\\Components",
     "\\SistemaVenta.AplicacionWeb",
-    "\\SistemaVenta.AplicacionWeb\\Views",
-    "\\SistemaVenta.AplicacionWeb\\Views\\DashBoard"
+    "\\SistemaVenta.AplicacionWeb\\Views\\DashBoard",
+    "\\SistemaVenta.AplicacionWeb\\wwwroot",
+    "\\SistemaVenta.AplicacionWeb\\wwwroot\\js",
+    "\\SistemaVenta.AplicacionWeb\\wwwroot\\js\\vistas",
+    "\\SistemaVenta.BLL",
+    "\\SistemaVenta.BLL\\Implementacion"
   ],
-  "SelectedNode": "\\SistemaVenta.AplicacionWeb\\Views\\DashBoard\\Index.cshtml",
+  "SelectedNode": "\\SistemaVenta.AplicacionWeb\\appsettings.json",
   "PreviewInSolutionExplorer": false
 }

@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
 
 
     $(".container-fluid").LoadingOverlay("show");
@@ -8,7 +9,8 @@
             $(".container-fluid").LoadingOverlay("hide");
             return response.ok ? response.json() : Promise.reject(response);
         })
-      
+        .then(responseJson => {
+
 
             if (responseJson.estado) {
                 const d = responseJson.objeto
@@ -18,8 +20,6 @@
                 $("#txtCorreo").val(d.correo)
                 $("#txTelefono").val(d.telefono)
                 $("#txtRol").val(d.nombreRol)
-    
-
 
             } else {
                 swal("Los sentimos", responseJson.mensaje, "error")
@@ -29,6 +29,7 @@
 
 
 })
+
 
 $("#btnGuardarCambios").click(function () {
 
@@ -42,6 +43,8 @@ $("#btnGuardarCambios").click(function () {
         $("#txTelefono").focus()
         return;
     }
+
+
     swal({
         title: "¿Desea guardar los cambios?",
         type: "warning",
@@ -59,15 +62,13 @@ $("#btnGuardarCambios").click(function () {
                 $(".showSweetAlert").LoadingOverlay("show");
 
                 let modelo = {
-
                     correo: $("#txtCorreo").val().trim(),
                     telefono: $("#txTelefono").val().trim()
-
                 }
 
                 fetch("/Home/GuardarPerfil", {
-                    method: "POST"
-                     headers: { "Content-Type": "application/json; charset=utf-8" },
+                    method: "POST",
+                    headers: { "Content-Type": "application/json; charset=utf-8" },
                     body: JSON.stringify(modelo)
                 })
                     .then(response => {
@@ -77,7 +78,6 @@ $("#btnGuardarCambios").click(function () {
                     .then(responseJson => {
 
                         if (responseJson.estado) {
-
 
                             swal("Listo!", "Los cambios fueron guardados", "success")
                         } else {
@@ -89,6 +89,7 @@ $("#btnGuardarCambios").click(function () {
             }
         }
     )
+
 })
 
 
@@ -104,21 +105,20 @@ $("#btnCambiarClave").click(function () {
         return;
     }
 
-    if ($("#txtClaveNueva").val().trim() != $("#txtConfirmarClave").val().trim() {
+    if ($("#txtClaveNueva").val().trim() != $("#txtConfirmarClave").val().trim()) {
         toastr.warning("", "Las contraseñas no coinciden")
         return;
     }
 
     let modelo = {
-
         claveActual: $("#txtClaveActual").val().trim(),
-        claveNueva: $("#txtClaveNueva").val().trim(),
-
+        claveNueva: $("#txtClaveNueva").val().trim()
     }
 
+
     fetch("/Home/CambiarClave", {
-        method: "POST"
-                     headers: { "Content-Type": "application/json; charset=utf-8" },
+        method: "POST",
+        headers: { "Content-Type": "application/json; charset=utf-8" },
         body: JSON.stringify(modelo)
     })
         .then(response => {
@@ -129,8 +129,7 @@ $("#btnCambiarClave").click(function () {
 
             if (responseJson.estado) {
 
-
-                swal("Listo!", "Su contraseña fue actualizada", "success")
+                swal("Listo!", "Su contraseña  fue actualizada", "success")
                 $("input.input-validar").val("");
             } else {
                 swal("Los sentimos", responseJson.mensaje, "error")

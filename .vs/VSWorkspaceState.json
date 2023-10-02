@@ -1,15 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Recursos\\Components",
-    "\\SistemaVenta.AplicacionWeb",
-    "\\SistemaVenta.AplicacionWeb\\Views\\DashBoard",
-    "\\SistemaVenta.AplicacionWeb\\wwwroot",
-    "\\SistemaVenta.AplicacionWeb\\wwwroot\\js",
-    "\\SistemaVenta.AplicacionWeb\\wwwroot\\js\\vistas",
-    "\\SistemaVenta.BLL",
-    "\\SistemaVenta.BLL\\Implementacion"
+    ""
   ],
-  "SelectedNode": "\\SistemaVenta.AplicacionWeb\\appsettings.json",
+  "SelectedNode": "\\SolucionSistemaVenta.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -71,7 +71,7 @@ namespace SistemaVenta.AplicacionWeb.Controllers
                 string urlPlantillaCorreo = $"{this.Request.Scheme}://{this.Request.Host}/Plantilla/EnviarClave?correo=[correo]&clave=[clave]";
 
                 Usuario usuario_creado = await _usuarioServicio.Crear(_mapper.Map<Usuario>(vmUsuario), fotoStream, nombreFoto, urlPlantillaCorreo);
-
+                
                 vmUsuario = _mapper.Map<VMUsuario>(usuario_creado);
 
                 gResponse.Estado = true;

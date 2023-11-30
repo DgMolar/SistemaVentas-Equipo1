@@ -28,6 +28,7 @@ namespace SistemaVenta.DAL.DBContext
         public virtual DbSet<RolMenu> RolMenus { get; set; } = null!;
         public virtual DbSet<TipoDocumentoVenta> TipoDocumentoVenta { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
+        public virtual DbSet<Cliente> Cliente { get; set; } = null!;
         public virtual DbSet<Venta> Venta { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -425,17 +426,56 @@ namespace SistemaVenta.DAL.DBContext
                     .HasConstraintName("FK__Usuario__idRol__1BFD2C07");
             });
 
+            modelBuilder.Entity<Cliente>(entity =>
+            {
+                entity.HasKey(e => e.idCliente)
+                    .HasName("PK__Cliente__885457EE40F3768D");
+
+                entity.ToTable("Cliente");
+
+                entity.Property(e => e.idCliente).HasColumnName("idCliente");
+
+                entity.Property(e => e.rfc)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("rfc");
+
+                entity.Property(e => e.correo)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("correo");
+
+                entity.Property(e => e.esActivo).HasColumnName("esActivo");
+
+                entity.Property(e => e.fechaRegistro)
+                    .HasColumnType("datetime")
+                    .HasColumnName("fechaRegistro")
+                    .HasDefaultValueSql("(getdate())");
+
+
+                entity.Property(e => e.nombre)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("nombre");
+
+                entity.Property(e => e.domicilioFiscalReceptor)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("domicilioFiscalReceptor");
+
+                entity.Property(e => e.regimenFiscalReceptor)
+                    .HasMaxLength(500)
+                    .IsUnicode(false)
+                    .HasColumnName("regimenFiscalReceptor");
+
+            });
+
             modelBuilder.Entity<Venta>(entity =>
             {
                 entity.HasKey(e => e.IdVenta)
                     .HasName("PK__Venta__077D56144A1DEFDA");
 
                 entity.Property(e => e.IdVenta).HasColumnName("idVenta");
-
-                entity.Property(e => e.DocumentoCliente)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("documentoCliente");
 
                 entity.Property(e => e.FechaRegistro)
                     .HasColumnType("datetime")
@@ -449,11 +489,6 @@ namespace SistemaVenta.DAL.DBContext
                 entity.Property(e => e.ImpuestoTotal)
                     .HasColumnType("decimal(10, 2)")
                     .HasColumnName("impuestoTotal");
-
-                entity.Property(e => e.NombreCliente)
-                    .HasMaxLength(20)
-                    .IsUnicode(false)
-                    .HasColumnName("nombreCliente");
 
                 entity.Property(e => e.NumeroVenta)
                     .HasMaxLength(6)

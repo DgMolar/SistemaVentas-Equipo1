@@ -82,8 +82,8 @@ $("#btnBuscar").click(function () {
                             $("<td>").text(venta.fechaRegistro),
                             $("<td>").text(venta.numeroVenta),
                             $("<td>").text(venta.tipoDocumentoVenta),
-                            $("<td>").text(venta.documentoCliente),
-                            $("<td>").text(venta.nombreCliente),
+                            //$("<td>").text(venta.documentoCliente),
+                            //$("<td>").text(venta.nombreCliente),
                             $("<td>").text(venta.total),
                             $("<td>").append(
                                 $("<button>").addClass("btn btn-info btn-sm").append(

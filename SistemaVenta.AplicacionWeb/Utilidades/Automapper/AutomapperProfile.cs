@@ -12,14 +12,10 @@ namespace SistemaVenta.AplicacionWeb.Utilidades.Automapper
         {
             #region Cliente
             CreateMap<Cliente, VMCliente>()
-                .ForMember(destino => destino.idCliente, opt => opt.MapFrom(origen => origen.idCliente))
-                .ForMember(destino => destino.nombre, opt => opt.MapFrom(origen => origen.nombre))
-                .ForMember(destino => destino.correo, opt => opt.MapFrom(origen => origen.correo))
-                .ForMember(destino => destino.rfc, opt => opt.MapFrom(origen => origen.rfc))
-                .ForMember(destino => destino.domicilioFiscalReceptor, opt => opt.MapFrom(origen => origen.domicilioFiscalReceptor))
-                .ForMember(destino => destino.regimenFiscalReceptor, opt => opt.MapFrom(origen => origen.regimenFiscalReceptor))
-                .ForMember(destino => destino.esActivo, opt => opt.MapFrom(origen => origen.esActivo))
-                .ForMember(destino => destino.fechaRegistro, opt => opt.MapFrom(origen => origen.fechaRegistro));
+                .ForMember(destino =>destino.esActivo, opt => opt.MapFrom((origen => origen.esActivo == true ? 1 : 0)));
+            CreateMap<VMCliente, Cliente>()
+                .ForMember(destino => destino.esActivo, opt => opt.MapFrom((origen => origen.esActivo == 1 ? true : false)));
+
             #endregion
             #region Rol
             CreateMap<Rol, VMRol>().ReverseMap();

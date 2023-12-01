@@ -1,4 +1,4 @@
-﻿
+﻿console.log("hola Usuarios")
 
 const MODELO_BASE = {
     idUsuario: 0,
@@ -91,9 +91,9 @@ function mostrarModal(modelo = MODELO_BASE) {
     $("#txtTelefono").val(modelo.telefono)
     $("#cboRol").val(modelo.idRol == 0 ? $("#cboRol option:first").val() : modelo.idRol)
     $("#cboEstado").val(modelo.esActivo)
+    console.log("Al abrir el Modal Activo es:", modelo.esActivo)
     $("#txtFoto").val("")
     $("#imgUsuario").attr("src", modelo.urlFoto)
-
 
     $("#modalData").modal("show")
 }
@@ -133,7 +133,7 @@ $("#btnGuardar").click(function () {
     $("#modalData").find("div.modal-content").LoadingOverlay("show");
 
     if (modelo.idUsuario == 0) {
-
+        console.log("Al editar", modelo)
         fetch("/Usuario/Crear", {
             method: "POST",
             body: formData
@@ -154,6 +154,7 @@ $("#btnGuardar").click(function () {
                 }
             })
     } else {
+        console.log("Al editar", modelo)
         fetch("/Usuario/Editar", {
             method: "PUT",
             body: formData

@@ -436,7 +436,7 @@ namespace SistemaVenta.DAL.DBContext
                 entity.Property(e => e.idCliente).HasColumnName("idCliente");
 
                 entity.Property(e => e.rfc)
-                    .HasMaxLength(100)
+                    .HasMaxLength(13)
                     .IsUnicode(false)
                     .HasColumnName("rfc");
 
@@ -464,7 +464,7 @@ namespace SistemaVenta.DAL.DBContext
                     .HasColumnName("domicilioFiscalReceptor");
 
                 entity.Property(e => e.regimenFiscalReceptor)
-                    .HasMaxLength(500)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("regimenFiscalReceptor");
 

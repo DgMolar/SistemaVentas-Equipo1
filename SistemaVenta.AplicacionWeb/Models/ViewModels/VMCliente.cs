@@ -8,7 +8,7 @@
         public string? rfc { get; set; }
         public string? domicilioFiscalReceptor { get; set; }
         public string? regimenFiscalReceptor { get; set; }
-        public bool? esActivo { get; set; }
+        public int? esActivo { get; set; }
         public DateTime? fechaRegistro { get; set; }
     }
 }

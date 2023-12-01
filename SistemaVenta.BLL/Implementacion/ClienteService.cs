@@ -23,19 +23,93 @@ namespace SistemaVenta.BLL.Implementacion
         {
             _repositorio = repositorio;
         }
-        public Task<Cliente> Crear(Cliente entidad)
+        public async Task<Cliente> Crear(Cliente entidad)
         {
-            throw new NotImplementedException();
+
+            Cliente cliente_existe = await _repositorio.Obtener(c => c.rfc == entidad.rfc);
+
+            if (cliente_existe != null)
+                throw new TaskCanceledException("El ciente (RFC) ya existe");
+
+
+            try
+            {
+
+                Cliente cliente_creado = await _repositorio.Crear(entidad);
+
+                if (cliente_creado.idCliente == 0)
+                    throw new TaskCanceledException("No se pudo crear el Cliente");
+
+                IQueryable<Cliente> query = await _repositorio.Consultar(c => c.idCliente == cliente_creado.idCliente);
+                cliente_creado = query.First();
+
+                return cliente_creado;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
 
-        public Task<Cliente> Editar(Cliente entidad)
+        public async Task<Cliente> Editar(Cliente entidad)
         {
-            throw new NotImplementedException();
+            Cliente cliente_existe = await _repositorio.Obtener(u => u.correo == entidad.correo && u.idCliente != entidad.idCliente);
+
+            if (cliente_existe != null)
+                throw new TaskCanceledException("El correo ya existe");
+
+
+            try
+            {
+
+                IQueryable<Cliente> queryCliente = await _repositorio.Consultar(c => c.idCliente == entidad.idCliente);
+
+                Cliente cliente_editar = queryCliente.First();
+
+                cliente_editar.nombre = entidad.nombre;
+                cliente_editar.correo = entidad.correo;
+                cliente_editar.rfc = entidad.rfc;
+                cliente_editar.domicilioFiscalReceptor = entidad.domicilioFiscalReceptor;
+                cliente_editar.esActivo = entidad.esActivo;
+                cliente_editar.regimenFiscalReceptor = entidad.regimenFiscalReceptor;
+
+
+                bool respuesta = await _repositorio.Editar(cliente_editar);
+
+                if (!respuesta)
+                    throw new TaskCanceledException("No se pudo modificar el Cliente:(");
+
+                Cliente cliente_editado = queryCliente.First();
+
+                return cliente_editado;
+
+            }
+            catch
+            {
+                throw;
+            }
         }
 
-        public Task<bool> Eliminar(int idCliente)
+        public async Task<bool> Eliminar(int idCliente)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Cliente cliente_encontrado = await _repositorio.Obtener(u => u.idCliente == idCliente);
+
+                if (cliente_encontrado == null)
+                    throw new TaskCanceledException("El cliente no existe");
+
+                
+                bool respuesta = await _repositorio.Eliminar(cliente_encontrado);
+
+                return true;
+
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task<List<Cliente>> Lista()

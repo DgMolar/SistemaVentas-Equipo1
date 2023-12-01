@@ -1,4 +1,4 @@
-﻿console.log("Hola xd")
+﻿
 
 const MODELO_BASE = {
     idCliente: 0,
@@ -8,6 +8,7 @@ const MODELO_BASE = {
     domicilioFiscalReceptor: "",
     regimenFiscalReceptor: "",
     esActivo: 1
+    
 }
 
 let tablaData;
@@ -50,7 +51,7 @@ $(document).ready(function () {
                 text: 'Exportar Excel',
                 extend: 'excelHtml5',
                 title: '',
-                filename: 'Reporte Usuarios',
+                filename: 'Reporte Clientes',
                 exportOptions: {
                     columns: [2, 3, 4, 5, 6]
                 }
@@ -64,168 +65,173 @@ $(document).ready(function () {
 })
 
 
-//function mostrarModal(modelo = MODELO_BASE) {
-//    $("#txtId").val(modelo.idUsuario)
-//    $("#txtNombre").val(modelo.nombre)
-//    $("#txtCorreo").val(modelo.correo)
-//    $("#txtTelefono").val(modelo.telefono)
-//    $("#cboRol").val(modelo.idRol == 0 ? $("#cboRol option:first").val() : modelo.idRol)
-//    $("#cboEstado").val(modelo.esActivo)
-//    $("#txtFoto").val("")
-//    $("#imgUsuario").attr("src", modelo.urlFoto)
+function mostrarModal(modelo = MODELO_BASE) {
+    $("#txtId").val(modelo.idCliente)
+    $("#txtNombre").val(modelo.nombre)
+    $("#txtCorreo").val(modelo.correo)
+    $("#txtDomicilio").val(modelo.domicilioFiscalReceptor)
+    $("#txtRFC").val(modelo.rfc)
+
+    $("#clienteEstado").val(modelo.esActivo);
+    console.log("Al abrir el Modal Activo es:", modelo.esActivo)
+
+    $("#cboRegimenFiscal").val(modelo.regimenFiscalReceptor)
+    $("#modalData").modal("show")
+}
+
+$("#btnNuevo").click(function () {
+    mostrarModal()
+})
 
 
-//    $("#modalData").modal("show")
-//}
+$("#btnGuardar").click(function () {
 
-//$("#btnNuevo").click(function () {
-//    mostrarModal()
-//})
+    const inputs = $("input.input-validar").serializeArray();
+    const inputs_sin_valor = inputs.filter((item) => item.value.trim() == "")
 
+    if (inputs_sin_valor.length > 0) {
+        const mensaje = `Debe completar el campo : "${inputs_sin_valor[0].name}"`;
+        toastr.warning("", mensaje)
+        $(`input[name="${inputs_sin_valor[0].name}"]`).focus()
+        return;
+    }
 
-//$("#btnGuardar").click(function () {
+    const modelo = structuredClone(MODELO_BASE);
 
-//    const inputs = $("input.input-validar").serializeArray();
-//    const inputs_sin_valor = inputs.filter((item) => item.value.trim() == "")
+    modelo["idCliente"] = parseInt($("#txtId").val())
+    modelo["nombre"] = $("#txtNombre").val()
+    modelo["correo"] = $("#txtCorreo").val()
+    modelo["rfc"] = $("#txtRFC").val()
+    modelo["domicilioFiscalReceptor"] = $("#txtDomicilio").val()
+    modelo["esActivo"] = $("#clienteEstado").val()
 
-//    if (inputs_sin_valor.length > 0) {
-//        const mensaje = `Debe completar el campo : "${inputs_sin_valor[0].name}"`;
-//        toastr.warning("", mensaje)
-//        $(`input[name="${inputs_sin_valor[0].name}"]`).focus()
-//        return;
-//    }
+    
 
-//    const modelo = structuredClone(MODELO_BASE);
-//    modelo["idUsuario"] = parseInt($("#txtId").val())
-//    modelo["nombre"] = $("#txtNombre").val()
-//    modelo["correo"] = $("#txtCorreo").val()
-//    modelo["telefono"] = $("#txtTelefono").val()
-//    modelo["idRol"] = $("#cboRol").val()
-//    modelo["esActivo"] = $("#cboEstado").val()
+    modelo["regimenFiscalReceptor"] = $("#cboRegimenFiscal").val()
 
-//    const inputFoto = document.getElementById("txtFoto")
+    const formData = new FormData();
 
-//    const formData = new FormData();
+    formData.append("modelo", JSON.stringify(modelo))
+    
+    $("#modalData").find("div.modal-content").LoadingOverlay("show");
 
-//    formData.append("foto", inputFoto.files[0])
-//    formData.append("modelo", JSON.stringify(modelo))
+    if (modelo.idCliente == 0) {
+        console.log("Datos nuevos:", modelo);
+        fetch("/Cliente/Crear", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => {
+                $("#modalData").find("div.modal-content").LoadingOverlay("hide");
+                console.log("llegué", response)
+                return response.ok ? response.json() : Promise.reject(response);
+            })
+            .then(responseJson => {
 
-//    $("#modalData").find("div.modal-content").LoadingOverlay("show");
+                if (responseJson.estado) {
 
-//    if (modelo.idUsuario == 0) {
+                    tablaData.row.add(responseJson.objeto).draw(false)
+                    $("#modalData").modal("hide")
+                    swal("Listo!", "El Cliente fue creado", "success")
+                } else {
+                    swal("Los sentimos", responseJson.mensaje, "error")
+                }
+            })
+    } else {
+        console.log("Datos editados:", modelo);
+        fetch("/Cliente/Editar", {
+            method: "PUT",
+            body: formData
+        })
+            .then(response => {
+                $("#modalData").find("div.modal-content").LoadingOverlay("hide");
+                return response.ok ? response.json() : Promise.reject(response);
+            })
+            .then(responseJson => {
 
-//        fetch("/Usuario/Crear", {
-//            method: "POST",
-//            body: formData
-//        })
-//            .then(response => {
-//                $("#modalData").find("div.modal-content").LoadingOverlay("hide");
-//                return response.ok ? response.json() : Promise.reject(response);
-//            })
-//            .then(responseJson => {
+                if (responseJson.estado) {
 
-//                if (responseJson.estado) {
+                    tablaData.row(filaSeleccionada).data(responseJson.objeto).draw(false);
+                    filaSeleccionada = null;
+                    $("#modalData").modal("hide")
+                    swal("Listo!", "El Cliente fue modificado", "success")
+                } else {
+                    swal("Los sentimos", responseJson.mensaje, "error")
+                }
+            })
 
-//                    tablaData.row.add(responseJson.objeto).draw(false)
-//                    $("#modalData").modal("hide")
-//                    swal("Listo!", "El usuario fue creado", "success")
-//                } else {
-//                    swal("Los sentimos", responseJson.mensaje, "error")
-//                }
-//            })
-//    } else {
-//        fetch("/Usuario/Editar", {
-//            method: "PUT",
-//            body: formData
-//        })
-//            .then(response => {
-//                $("#modalData").find("div.modal-content").LoadingOverlay("hide");
-//                return response.ok ? response.json() : Promise.reject(response);
-//            })
-//            .then(responseJson => {
-
-//                if (responseJson.estado) {
-
-//                    tablaData.row(filaSeleccionada).data(responseJson.objeto).draw(false);
-//                    filaSeleccionada = null;
-//                    $("#modalData").modal("hide")
-//                    swal("Listo!", "El usuario fue modificado", "success")
-//                } else {
-//                    swal("Los sentimos", responseJson.mensaje, "error")
-//                }
-//            })
-
-//    }
+    }
 
 
-//})
+})
 
-//let filaSeleccionada;
-//$("#tbdata tbody").on("click", ".btn-editar", function () {
+let filaSeleccionada;
+$("#tbdata tbody").on("click", ".btn-editar", function () {
+    if ($(this).closest("tr").hasClass("child")) {
+        filaSeleccionada = $(this).closest("tr").prev();
+    } else {
+        filaSeleccionada = $(this).closest("tr");
+    }
 
-//    if ($(this).closest("tr").hasClass("child")) {
-//        filaSeleccionada = $(this).closest("tr").prev();
-//    } else {
-//        filaSeleccionada = $(this).closest("tr");
-//    }
+    const data = tablaData.row(filaSeleccionada).data();
 
-//    const data = tablaData.row(filaSeleccionada).data();
+    mostrarModal(data);
 
-//    mostrarModal(data);
+})
 
-//})
+$("#tbdata tbody").on("click", ".btn-eliminar", function () {
 
-//$("#tbdata tbody").on("click", ".btn-eliminar", function () {
+    let fila;
+    if ($(this).closest("tr").hasClass("child")) {
+        fila = $(this).closest("tr").prev();
+    } else {
+        fila = $(this).closest("tr");
+    }
 
-//    let fila;
-//    if ($(this).closest("tr").hasClass("child")) {
-//        fila = $(this).closest("tr").prev();
-//    } else {
-//        fila = $(this).closest("tr");
-//    }
+    const data = tablaData.row(fila).data();
 
-//    const data = tablaData.row(fila).data();
+    swal({
+        title: "¿Está seguro?",
+        text: `Eliminar al Cliente "${data.nombre}"`,
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Si, eliminar",
+        cancelButtonText: "No, cancelar",
+        closeOnConfirm: false,
+        closeOnCancel: true
+    },
+        function (respuesta) {
 
-//    swal({
-//        title: "¿Está seguro?",
-//        text: `Eliminar al usuario "${data.nombre}"`,
-//        type: "warning",
-//        showCancelButton: true,
-//        confirmButtonClass: "btn-danger",
-//        confirmButtonText: "Si, eliminar",
-//        cancelButtonText: "No, cancelar",
-//        closeOnConfirm: false,
-//        closeOnCancel: true
-//    },
-//        function (respuesta) {
+            if (respuesta) {
 
-//            if (respuesta) {
+                $(".showSweetAlert").LoadingOverlay("show");
 
-//                $(".showSweetAlert").LoadingOverlay("show");
+                /*POSIBLE ERROR SI ID ES MAYUSCULA*/
 
-//                fetch(`/Usuario/Eliminar?IdUsuario=${data.idUsuario}`, {
-//                    method: "DELETE"
-//                })
-//                    .then(response => {
-//                        $(".showSweetAlert").LoadingOverlay("hide");
-//                        return response.ok ? response.json() : Promise.reject(response);
-//                    })
-//                    .then(responseJson => {
+                fetch(`/Cliente/Eliminar?IdCliente=${data.idCliente}`, {
+                    method: "DELETE"
+                })
+                    .then(response => {
+                        $(".showSweetAlert").LoadingOverlay("hide");
+                        return response.ok ? response.json() : Promise.reject(response);
+                    })
+                    .then(responseJson => {
 
-//                        if (responseJson.estado) {
+                        if (responseJson.estado) {
 
-//                            tablaData.row(fila).remove().draw()
+                            tablaData.row(fila).remove().draw()
 
-//                            swal("Listo!", "El usuario fue eliminado", "success")
-//                        } else {
-//                            swal("Los sentimos", responseJson.mensaje, "error")
-//                        }
-//                    })
-
-
-//            }
-//        }
-//    )
+                            swal("Listo!", "El Cliente fue eliminado", "success")
+                        } else {
+                            swal("Los sentimos", responseJson.mensaje, "error")
+                        }
+                    })
 
 
-//})
+            }
+        }
+    )
+
+
+})

@@ -95,8 +95,14 @@ namespace SistemaVenta.AplicacionWeb.Controllers
         [HttpGet]
         public async Task<IActionResult> Historial(string numeroVenta,string fechaInicio, string fechaFin)
         {
-           List<VMVenta> vmHistorialVenta = _mapper.Map<List<VMVenta>>(await _ventaServicio.Historial(numeroVenta, fechaInicio, fechaFin));
 
+            Console.WriteLine("Entre");
+           List<VMVenta> vmHistorialVenta = _mapper.Map<List<VMVenta>>(await _ventaServicio.Historial(numeroVenta, fechaInicio, fechaFin));
+            
+            foreach(VMVenta vMVenta in vmHistorialVenta)
+            {
+                Console.WriteLine(vMVenta.idCliente);
+            }
             return StatusCode(StatusCodes.Status200OK, vmHistorialVenta);
         }
         public IActionResult MostrarPDFVenta(string numeroVenta)

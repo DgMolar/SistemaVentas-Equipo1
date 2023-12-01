@@ -80,6 +80,7 @@ $("#btnBuscar").click(function () {
                     $("#tbventa tbody").append(
                         $("<tr>").append(
                             $("<td>").text(venta.fechaRegistro),
+                            $("<td>").text("AQUI VA EL ID"),
                             $("<td>").text(venta.numeroVenta),
                             $("<td>").text(venta.tipoDocumentoVenta),
                             //$("<td>").text(venta.documentoCliente),

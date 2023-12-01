@@ -14,6 +14,7 @@ namespace SistemaVenta.Entity
         public string? NumeroVenta { get; set; }
         public int? IdTipoDocumentoVenta { get; set; }
         public int? IdUsuario { get; set; }
+        public int? idCliente { get; set; }
         //public string? DocumentoCliente { get; set; }
         //public string? NombreCliente { get; set; }
         public decimal? SubTotal { get; set; }
@@ -24,5 +25,7 @@ namespace SistemaVenta.Entity
         public virtual TipoDocumentoVenta? IdTipoDocumentoVentaNavigation { get; set; }
         public virtual Usuario? IdUsuarioNavigation { get; set; }
         public virtual ICollection<DetalleVenta> DetalleVenta { get; set; }
+
+       
     }
 }

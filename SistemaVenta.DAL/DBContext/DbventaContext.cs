@@ -486,6 +486,8 @@ namespace SistemaVenta.DAL.DBContext
 
                 entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
 
+                entity.Property(e => e.idCliente).HasColumnName("idCliente");
+
                 entity.Property(e => e.ImpuestoTotal)
                     .HasColumnType("decimal(10, 2)")
                     .HasColumnName("impuestoTotal");

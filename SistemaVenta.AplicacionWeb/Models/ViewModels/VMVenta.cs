@@ -9,6 +9,7 @@ namespace SistemaVenta.AplicacionWeb.Models.ViewModels
         public int? IdTipoDocumentoVenta { get; set; }
         public string? TipoDocumentoVenta { get; set; }
         public int? IdUsuario { get; set; }
+        public int? idCliente { get; set; }
         public string? Usuario { get; set; }
         public string? DocumentoCliente { get; set; }
         public string? NombreCliente { get; set; }

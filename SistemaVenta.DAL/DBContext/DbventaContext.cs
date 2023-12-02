@@ -293,6 +293,53 @@ namespace SistemaVenta.DAL.DBContext
                     .IsUnicode(false)
                     .HasColumnName("urlImagen");
 
+                entity.Property(e => e.unidadMedida)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("unidadMedida");
+
+                entity.Property(e => e.unidadMedidaSat)
+                    .HasMaxLength(3)
+                    .IsUnicode(false)
+                    .HasColumnName("unidadMedidaSat");
+
+                entity.Property(e => e.claveProductoSat)
+                 .HasMaxLength(10)
+                 .IsUnicode(false)
+                 .HasColumnName("claveProductoSat");
+
+                entity.Property(e => e.objetoImpuesto)
+                 .HasMaxLength(2)
+                 .IsUnicode(false)
+                 .HasColumnName("objetoImpuesto");
+
+                entity.Property(e => e.factorImpuesto)
+                 .HasMaxLength(6)
+                 .IsUnicode(false)
+                 .HasColumnName("factorImpuesto");
+
+                entity.Property(e => e.impuesto)
+                 .HasMaxLength(3)
+                 .IsUnicode(false)
+                 .HasColumnName("impuesto");
+
+                entity.Property(e => e.valorImpuesto)
+                 .HasColumnType("decimal")
+                 .IsUnicode(false)
+                 .HasColumnName("valorImpuesto");
+
+                entity.Property(e => e.tipoImpuesto)
+                 .HasMaxLength(20)
+                    .IsUnicode(false)
+                 .HasColumnName("tipoImpuesto");
+
+                entity.Property(e => e.descuento)
+                 .HasColumnType("decimal")
+                 .IsUnicode(false)
+                 .HasColumnName("descuento");
+
+
+
                 entity.HasOne(d => d.IdCategoriaNavigation)
                     .WithMany(p => p.Productos)
                     .HasForeignKey(d => d.IdCategoria)

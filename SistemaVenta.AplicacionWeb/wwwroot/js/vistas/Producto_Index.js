@@ -10,9 +10,24 @@ const MODELO_BASE = {
     urlImagen: "",
     precio: 0,
     esActivo: 1,
-
+    unidadDeMedida: "",
+    unidadMedidaSat: "",
+    claveProductoSat: "",
+    objetoImpuesto: "",
+    factorImpuesto: "",
+    impuesto: "",
+    valorImpuesto: 0.0,
+    tipoImpuesto: "",
+    descuento: 0.0
 }
 
+
+
+const unidadDeMedidaMap = new Map();
+unidadDeMedidaMap.set("H87", "Pieza");
+unidadDeMedidaMap.set("H88", "Piezota");
+unidadDeMedidaMap.set("H89", "Pie");
+unidadDeMedidaMap.set("H90", "Pulgada")
 
 
 let tablaData;
@@ -43,7 +58,7 @@ $(document).ready(function () {
             "datatype": "json"
         },
         "columns": [
-            { "data": "idProducto", "visible": false, "searchable": false },
+            { "data": "idProducto", "visible": true, "searchable": false },
             {
                 "data": "urlImagen", render: function (data) {
                     return `<img style="height:60px" src=${data} class="rounded mx-auto d-block"/>`
@@ -63,6 +78,13 @@ $(document).ready(function () {
                         return '<span class="badge badge-danger">No Activo</span>';
                 }
             },
+            { "data": "unidadMedida" },
+            { "data": "claveProductoSat" },
+            { "data": "objetoImpuesto" },
+            { "data": "factorImpuesto" },
+            { "data": "valorImpuesto" },
+            { "data": "tipoImpuesto" },
+            { "data": "descuento" },
             {
                 "defaultContent": '<button class="btn btn-primary btn-editar btn-sm mr-2"><i class="fas fa-pencil-alt"></i></button>' +
                     '<button class="btn btn-danger btn-eliminar btn-sm"><i class="fas fa-trash-alt"></i></button>',
@@ -70,6 +92,7 @@ $(document).ready(function () {
                 "searchable": false,
                 "width": "80px"
             }
+
         ],
         order: [[0, "desc"]],
         dom: "Bfrtip",
@@ -87,6 +110,7 @@ $(document).ready(function () {
         language: {
             url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
         },
+        scrollX: true
     });
 
 })
@@ -104,6 +128,13 @@ function mostrarModal(modelo = MODELO_BASE) {
     $("#cboEstado").val(modelo.esActivo)
     $("#txtImagen").val("")
     $("#imgProducto").attr("src", modelo.urlImagen)
+    $("#cboClaveProductoSat").attr(modelo.claveProductoSat == null ? $("#cboClaveProductoSat option:first").val() : modelo.claveProductoSat)
+    //$("cboObjetoImpuesto").attr(modelo.objetoImpuesto)
+    //$("cboFactorImpuesto").attr(modelo.factorImpuesto)
+    //$("cboImpuesto").attr(modelo.impuesto)
+    //$("decValorImpuesto").attr(modelo.valorImpuesto)
+    //$("cboTipoImpuesto").attr(modelo.tipoImpuesto)
+    //$("decDescuento").attr(modelo.descuento)
 
 
     $("#modalData").modal("show")

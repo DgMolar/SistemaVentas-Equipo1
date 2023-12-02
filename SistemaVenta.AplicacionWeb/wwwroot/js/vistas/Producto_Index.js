@@ -128,13 +128,16 @@ function mostrarModal(modelo = MODELO_BASE) {
     $("#cboEstado").val(modelo.esActivo)
     $("#txtImagen").val("")
     $("#imgProducto").attr("src", modelo.urlImagen)
-    $("#cboClaveProductoSat").attr(modelo.claveProductoSat == null ? $("#cboClaveProductoSat option:first").val() : modelo.claveProductoSat)
-    //$("cboObjetoImpuesto").attr(modelo.objetoImpuesto)
-    //$("cboFactorImpuesto").attr(modelo.factorImpuesto)
-    //$("cboImpuesto").attr(modelo.impuesto)
-    //$("decValorImpuesto").attr(modelo.valorImpuesto)
-    //$("cboTipoImpuesto").attr(modelo.tipoImpuesto)
-    //$("decDescuento").attr(modelo.descuento)
+
+    /*NUEVOS CAMPOS*/
+    $("#cboUnidadMedida").val(modelo.unidadMedidaSat)
+    $("#cboClaveProductoSat").val(modelo.claveProductoSat)
+    $("#cboObjetoImpuesto").val(modelo.objetoImpuesto)
+    $("#cboFactorImpuesto").val(modelo.factorImpuesto)
+    $("#cboImpuesto").val(modelo.impuesto)
+    $("#decValorImpuesto").val(modelo.valorImpuesto)
+    $("#cboTipoImpuesto").val(modelo.tipoImpuesto)
+    $("#decDescuento").val(modelo.descuento)
 
 
     $("#modalData").modal("show")
@@ -170,6 +173,16 @@ $("#btnGuardar").click(function () {
     modelo["stock"] = $("#txtStock").val()
     modelo["precio"] = $("#txtPrecio").val()
     modelo["esActivo"] = $("#cboEstado").val()
+    /*NUEVOS CAMPOS*/
+    modelo["unidadMedidaSat"] = $("#cboUnidadMedida").val()
+    modelo["claveProductoSat"] = $("#cboClaveProductoSat").val()
+    modelo["objetoImpuesto"] = $("#cboObjetoImpuesto").val()
+    modelo["factorImpuesto"] = $("#cboFactorImpuesto").val()
+    modelo["impuesto"] = $("#cboImpuesto").val()
+    modelo["valorImpuesto"] = $("#decValorImpuesto").val()
+    modelo["tipoImpuesto"] = $("#cboTipoImpuesto").val()
+    modelo["descuento"] = $("#decDescuento").val()
+
 
     const inputFoto = document.getElementById("txtImagen")
 

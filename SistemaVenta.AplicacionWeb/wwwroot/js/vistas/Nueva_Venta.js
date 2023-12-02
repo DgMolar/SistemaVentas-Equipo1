@@ -1,5 +1,48 @@
 ﻿let ValorImpuesto = 0;
+let tableData;
+let idCliente = null;
 $(document).ready(function () {
+    tablaData = $('#tbdata').DataTable({
+        responsive: true,
+        "ajax": {
+            "url": '/Cliente/Lista',
+            "type": "GET",
+            "datatype": "json"
+        },
+        "columns": [
+            { "data": "idCliente", "searchable": false },
+            { "data": "nombre" },
+            { "data": "rfc" },
+            {
+                "data": null,
+                "render": function (data, type, row) {
+                    return '<input type="checkbox" class="selector" data-id="' + row.idCliente + '">';
+                },
+                "orderable": false,
+                "searchable": false,
+                "width": "40px"
+            },
+        ],
+        order: [[0, "asc"]],
+        dom: "Bfrtip",
+        buttons: [
+        ],
+        language: {
+            url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+        },
+    });
+
+    $('#tbdata tbody').on('click', '.selector', function () {
+
+        idCliente = $(this).data('id');
+        var isChecked = $(this).prop('checked');
+
+        if (!isChecked) {
+            idCliente = null;
+        }
+        
+    });
+
 
 
     fetch("/Venta/ListaTipoDocumentoVenta")
@@ -203,6 +246,11 @@ $(document).on("click", "button.btn-eliminar", function () {
 
 
 $("#btnTerminarVenta").click(function () {
+
+    if (idCliente === null) {
+        toastr.warning("", "Seleccione un usuario");
+        return;
+    }
 
     if (ProductosParaVenta.length < 1) {
         toastr.warning("", "Debe ingresar productos")

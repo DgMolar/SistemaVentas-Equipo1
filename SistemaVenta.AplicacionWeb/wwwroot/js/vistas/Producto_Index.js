@@ -10,9 +10,24 @@ const MODELO_BASE = {
     urlImagen: "",
     precio: 0,
     esActivo: 1,
-
+    unidadDeMedida: "",
+    unidadMedidaSat: "",
+    claveProductoSat: "",
+    objetoImpuesto: "",
+    factorImpuesto: "",
+    impuesto: "",
+    valorImpuesto: 0.0,
+    tipoImpuesto: "",
+    descuento: 0.0
 }
 
+
+
+const unidadDeMedidaMap = new Map();
+unidadDeMedidaMap.set("H87", "Pieza");
+unidadDeMedidaMap.set("H88", "Piezota");
+unidadDeMedidaMap.set("H89", "Pie");
+unidadDeMedidaMap.set("H90", "Pulgada")
 
 
 let tablaData;
@@ -113,6 +128,13 @@ function mostrarModal(modelo = MODELO_BASE) {
     $("#cboEstado").val(modelo.esActivo)
     $("#txtImagen").val("")
     $("#imgProducto").attr("src", modelo.urlImagen)
+    $("#cboClaveProductoSat").attr(modelo.claveProductoSat == null ? $("#cboClaveProductoSat option:first").val() : modelo.claveProductoSat)
+    //$("cboObjetoImpuesto").attr(modelo.objetoImpuesto)
+    //$("cboFactorImpuesto").attr(modelo.factorImpuesto)
+    //$("cboImpuesto").attr(modelo.impuesto)
+    //$("decValorImpuesto").attr(modelo.valorImpuesto)
+    //$("cboTipoImpuesto").attr(modelo.tipoImpuesto)
+    //$("decDescuento").attr(modelo.descuento)
 
 
     $("#modalData").modal("show")

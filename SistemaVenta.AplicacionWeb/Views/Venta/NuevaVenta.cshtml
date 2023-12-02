@@ -25,16 +25,25 @@
                         <div class="card-header py-3 bg-second-primary">
                             <h6 class="m-0 font-weight-bold text-white">Cliente</h6>
                         </div>
-                        <div class="card-body">
-                            <div class="form-row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" placeholder="numero documento">
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control form-control-sm" id="txtNombreCliente" placeholder="nombre completo">
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered" id="tbdata" cellspacing="0" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>RFC</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -135,8 +144,19 @@
     <!-- ============================================================
     =SCRIPTS PARA ESTA PAGINA
     ===============================================================-->
+
+    <script src="~/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script src="~/vendor/datatables/extensiones/js/dataTables.responsive.min.js"></script>
+    <script src="~/vendor/datatables/extensiones/js/dataTables.buttons.min.js"></script>
+    <script src="~/vendor/datatables/extensiones/js/jszip.min.js"></script>
+    <script src="~/vendor/datatables/extensiones/js/buttons.html5.min.js"></script>
+    <script src="~/vendor/datatables/extensiones/js/buttons.print.min.js"></script>
+
     <script src="~/vendor/select2/select2.min.js"></script>
     <script src="~/vendor/select2/es.min.js"></script>
 
     <script src="~/js/vistas/Nueva_Venta.js"></script>
+
 }

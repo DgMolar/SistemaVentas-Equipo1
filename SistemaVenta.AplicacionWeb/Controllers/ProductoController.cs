@@ -37,6 +37,15 @@ namespace SistemaVenta.AplicacionWeb.Controllers
 
             return StatusCode(StatusCodes.Status200OK, new { data = vmProductoLista });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ObtenerPorId(int idProducto)
+        {
+            VMProducto vmProductoLista = _mapper.Map<VMProducto>(await _productoServicio.ObtenerPorId(idProducto));
+            return StatusCode(StatusCodes.Status200OK, new { data = vmProductoLista });
+
+        }
+
         [HttpPost]
         public async Task<IActionResult> Crear([FromForm] IFormFile imagen, [FromForm] string modelo)
         {

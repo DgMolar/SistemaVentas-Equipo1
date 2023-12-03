@@ -153,6 +153,14 @@ namespace SistemaVenta.BLL.Implementacion
             }
         }
 
+        public async Task<Producto> ObtenerPorId(int idProducto)
+        {
+            IQueryable<Producto> query = await _repositorio.Consultar(u => u.IdProducto == idProducto);
 
+            Producto producto = query.FirstOrDefault();
+
+            return producto;
+
+        }
     }
 }

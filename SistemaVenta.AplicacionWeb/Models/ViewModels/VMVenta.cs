@@ -13,6 +13,7 @@ namespace SistemaVenta.AplicacionWeb.Models.ViewModels
         public string? Usuario { get; set; }
         public string? DocumentoCliente { get; set; }
         public string? NombreCliente { get; set; }
+        public string? Descuento { get; set; }
         public string? SubTotal { get; set; }
         public string? ImpuestoTotal { get; set; }
         public string? Total { get; set; }

@@ -3,7 +3,6 @@ let cliente = "";
 let dataCliente = "";
 let negocioData = "";
 
-
 const VISTA_BUSQUEDA = {
 
     busquedaFecha: () => {
@@ -161,12 +160,12 @@ $("#tbventa tbody").on("click", ".btn-info", function () {
                         folio: "01",
                         formaPago: "01",
                         subTotal: d.subTotal,
-                        descuento: "100",
+                        descuento: d.descuento,
                         moneda: negocioData.simboloMoneda,
                         tipoCambio: "1.0",
                         total: d.total,
                         tipoDeComprobante: "I",
-                        metodoPago: "01-Efectivo",
+                        metodoPago: "PUE",
                         lugarExpedicion: negocioData.direccion,
                         regimenFiscal: negocioData.telefono,
                         rfc: dataCliente.rfc,
@@ -177,14 +176,13 @@ $("#tbventa tbody").on("click", ".btn-info", function () {
 
                     },
                         DetalleVenta: [],
-                        totalImporteTranslado: "$50"
+                        totalImporteTranslado: "0"
                     };
 
                     await Promise.all(
                         d.detalleVenta.map(async detalle => {
-                            
-                            const productoData = await buscarProducto(detalle.idProducto);
 
+                            const productoData = await buscarProducto(detalle.idProducto);
                             const detalleVenta = {
                                 claveProdServ: productoData.claveProductoSat,
                                 noIdentificacion: detalle.idProducto.toString(),
@@ -201,15 +199,21 @@ $("#tbventa tbody").on("click", ".btn-info", function () {
                                 tasaOCuota: productoData.valorImpuesto,
                                 importeTranslado: (((detalle.cantidad * detalle.precio) * productoData.valorImpuesto) / 100).toString(),
                             };
-
+                            
                             datos.DetalleVenta.push(detalleVenta);
                         })
                     );
+                    const totalImporteTranslado = datos.DetalleVenta.reduce((total, detalle) => {
+                        return total + parseFloat(detalle.importeTranslado);
+                    }, 0);
 
+                    // Asignamos el total al campo correspondiente en datos.Venta
+                    console.log(totalImporteTranslado)
+                    datos.totalImporteTranslado = totalImporteTranslado.toString();
                     // Aquí se solicitaría el XML
                     let xmlGenerado = generarXML(datos);
                     console.log(xmlGenerado);
-
+                    
                     // Crear un blob con el contenido del XML
                     const blob = new Blob([xmlGenerado], { type: 'text/xml' });
 

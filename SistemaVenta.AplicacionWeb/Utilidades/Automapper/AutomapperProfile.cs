@@ -120,6 +120,10 @@ namespace SistemaVenta.AplicacionWeb.Utilidades.Automapper
                     destino.Usuario,
                     opt => opt.MapFrom(origen => origen.IdUsuarioNavigation.Nombre)
                 )
+                 .ForMember(destino =>
+                    destino.Descuento,
+                    opt => opt.MapFrom(origen => Convert.ToString(origen.Descuento.Value, new CultureInfo("es-PE")))
+                )
                 .ForMember(destino =>
                     destino.SubTotal,
                     opt => opt.MapFrom(origen => Convert.ToString(origen.SubTotal.Value, new CultureInfo("es-PE")))
@@ -139,6 +143,10 @@ namespace SistemaVenta.AplicacionWeb.Utilidades.Automapper
 
             CreateMap<VMVenta, Venta>()
               .ForMember(destino =>
+                   destino.Descuento,
+                   opt => opt.MapFrom(origen => Convert.ToDecimal(origen.Descuento, new CultureInfo("es-PE")))
+               )
+                .ForMember(destino =>
                    destino.SubTotal,
                    opt => opt.MapFrom(origen => Convert.ToDecimal(origen.SubTotal, new CultureInfo("es-PE")))
                )

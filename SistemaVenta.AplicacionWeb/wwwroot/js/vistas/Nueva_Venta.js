@@ -100,7 +100,7 @@ $(document).ready(function () {
                         {
                             id: item.idProducto,
                             text: item.descripcion,
-
+                            descuento: item.descuento,
                             marca: item.marca,
                             categoria: item.nombreCategoria,
                             urlImagen: item.urlImagen,
@@ -132,7 +132,7 @@ $(document).ready(function () {
                 </td>
                 <td>
                     <p style="font-weight: bolder;margin:2px">${data.marca}</p>
-                    <p style="margin:2px">${data.text}</p>
+                    <p style="margin:2px">${data.text} y tambien ${data.descuento}</p>
                 </td>
             </tr>
          </table>`
@@ -185,7 +185,8 @@ $("#cboBuscarProducto").on("select2:select", function (e) {
                 categoriaProducto: data.categoria,
                 cantidad: parseInt(valor),
                 precio: data.precio.toString(),
-                total: (parseFloat(valor) * data.precio).toString()
+                descuento: data.descuento.toString(),
+                total: (parseFloat(valor) * data.precio * (1 - parseInt(data.descuento) / 100)).toString(),
 
             }
 
@@ -222,13 +223,15 @@ function mostrarProducto_Precios() {
                 $("<td>").text(item.descripcionProducto),
                 $("<td>").text(item.cantidad),
                 $("<td>").text(item.precio),
+                $("<td>").text(item.descuento + "%"),
                 $("<td>").text(item.total)
             )
         )
     })
-
+    
     subtotal = total / (1 + porcentaje);
     igv = total - subtotal;
+    total = subtotal + igv;
 
     $("#txtSubTotal").val(subtotal.toFixed(2))
     $("#txtIGV").val(igv.toFixed(2))

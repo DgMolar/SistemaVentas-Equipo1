@@ -34,6 +34,13 @@ namespace SistemaVenta.AplicacionWeb.Controllers
             List<VMCliente> vmClienteLista = _mapper.Map<List<VMCliente>>(await _clienteServicio.Lista());
             return StatusCode(StatusCodes.Status200OK, new { data = vmClienteLista });
         }
+        [HttpGet]
+        public async Task<IActionResult> ObtenerPorId(int clienteId)
+        {
+            VMCliente vmClienteLista = _mapper.Map<VMCliente>(await _clienteServicio.ObtenerPorId(clienteId));
+            return StatusCode(StatusCodes.Status200OK, new { data = vmClienteLista });
+
+        }
 
         [HttpPost]
         public async Task<IActionResult> Crear([FromForm] string modelo)

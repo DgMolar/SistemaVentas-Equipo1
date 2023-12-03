@@ -1,4 +1,4 @@
-﻿
+﻿let cliente = {} ;
 const VISTA_BUSQUEDA = {
 
     busquedaFecha: () => {
@@ -103,38 +103,48 @@ $("#btnBuscar").click(function () {
 })
 
 $("#tbventa tbody").on("click", ".btn-info", function () {
+    
+    let d = $(this).data("venta");
 
-    let d = $(this).data("venta")
-
-    $("#txtFechaRegistro").val(d.fechaRegistro)
-    $("#txtNumVenta").val(d.numeroVenta)
-    $("#txtUsuarioRegistro").val(d.usuario)
-    $("#txtTipoDocumento").val(d.tipoDocumentoVenta)
-    $("#txtDocumentoCliente").val(d.documentoCliente)
-    $("#txtNombreCliente").val(d.nombreCliente)
-    $("#txtSubTotal").val(d.subTotal)
-    $("#txtIGV").val(d.impuestoTotal)
-    $("#txtTotal").val(d.total)
+    fetch("/Cliente/ObtenerPorId?clienteId=" + d.idCliente)
+        .then(response => response.json()) 
+        .then(data => {
+            cliente = data.data; 
 
 
-    $("#tbProductos tbody").html("");
 
-    d.detalleVenta.forEach((item) => {
+            $("#txtFechaRegistro").val(d.fechaRegistro)
+            $("#txtNumVenta").val(d.numeroVenta)
+            $("#txtUsuarioRegistro").val(d.usuario)
+            $("#txtTipoDocumento").val(d.tipoDocumentoVenta)
+            $("#txtCliente").val(cliente.nombre)
+            $("#txtRFC").val(cliente.rfc)
+            $("#txtSubTotal").val(d.subTotal)
+            $("#txtIGV").val(d.impuestoTotal)
+            $("#txtTotal").val(d.total)
 
-        $("#tbProductos tbody").append(
-            $("<tr>").append(
-                $("<td>").text(item.descripcionProducto),
-                $("<td>").text(item.cantidad),
-                $("<td>").text(item.precio),
-                $("<td>").text(item.total),
-            )
-        )
 
-    })
+            $("#tbProductos tbody").html("");
 
-    $("#linkImprimir").attr("href", `/Venta/MostrarPDFVenta?numeroVenta=${d.numeroVenta}`)
-    $("#linkFacturar").attr("href", `/Facturacion/Index?numeroVenta=${d.numeroVenta}`)
+            d.detalleVenta.forEach((item) => {
 
-    $("#modalData").modal("show");
+                $("#tbProductos tbody").append(
+                    $("<tr>").append(
+                        $("<td>").text(item.idProducto + "-" + item.descripcionProducto),
+                        $("<td>").text(item.cantidad),
+                        $("<td>").text(item.precio),
+                        $("<td>").text(item.total),
+                    )
+                )
 
+            })
+
+            $("#linkImprimir").attr("href", `/Venta/MostrarPDFVenta?numeroVenta=${d.numeroVenta}`)
+            $("#linkFacturar").attr("href", `/Facturacion/Index?numeroVenta=${d.numeroVenta}`)
+
+            $("#modalData").modal("show");
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 })

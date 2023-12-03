@@ -118,9 +118,15 @@ namespace SistemaVenta.BLL.Implementacion
             return query.ToList();
         }
 
-        public Task<Cliente> ObtenerPorId(int idCliente)
+        public  async Task<Cliente> ObtenerPorId(int idCliente)
         {
-            throw new NotImplementedException();
+            IQueryable<Cliente> query = await _repositorio.Consultar(u => u.idCliente == idCliente);
+
+            Cliente cliente = query.FirstOrDefault();
+
+            return cliente;
+
+            
         }
     }
 }

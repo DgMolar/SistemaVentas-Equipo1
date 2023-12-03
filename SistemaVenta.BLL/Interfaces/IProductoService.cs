@@ -14,6 +14,6 @@ namespace SistemaVenta.BLL.Interfaces
         Task<Producto> Crear(Producto entidad, Stream imagen = null, string NombreImagen = "");
         Task<Producto> Editar(Producto entidad, Stream imagen = null, string NombreImagen = "");
         Task<bool> Eliminar(int idProducto);
-
+        Task<Producto> ObtenerPorId(int idProducto);
     }
 }

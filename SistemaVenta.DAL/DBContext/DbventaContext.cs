@@ -544,6 +544,10 @@ namespace SistemaVenta.DAL.DBContext
                     .IsUnicode(false)
                     .HasColumnName("numeroVenta");
 
+                entity.Property(e => e.Descuento)
+                    .HasColumnType("decimal(10,2)")
+                    .HasColumnName("descuento");
+
                 entity.Property(e => e.SubTotal)
                     .HasColumnType("decimal(10, 2)")
                     .HasColumnName("subTotal");

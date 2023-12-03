@@ -177,7 +177,7 @@ $("#cboBuscarProducto").on("select2:select", function (e) {
                 toastr.warning("", "Debe ingresar un valor númerico")
                 return false;
             }
-
+            let descuentoTotal =(parseFloat(valor) * parseFloat(data.precio) * (parseInt(data.descuento) / 100));
             let producto = {
                 idProducto: data.id,
                 marcaProducto: data.marca,
@@ -185,7 +185,7 @@ $("#cboBuscarProducto").on("select2:select", function (e) {
                 categoriaProducto: data.categoria,
                 cantidad: parseInt(valor),
                 precio: data.precio.toString(),
-                descuento: data.descuento.toString(),
+                descuento: descuentoTotal.toString(),
                 total: (parseFloat(valor) * data.precio * (1 - parseInt(data.descuento) / 100)).toString(),
 
             }
@@ -203,6 +203,7 @@ $("#cboBuscarProducto").on("select2:select", function (e) {
 function mostrarProducto_Precios() {
 
     let total = 0;
+    let descuentoTotal = 0;
     let igv = 0;
     let subtotal = 0;
     let porcentaje = ValorImpuesto / 100;
@@ -212,7 +213,7 @@ function mostrarProducto_Precios() {
     ProductosParaVenta.forEach((item) => {
 
         total = total + parseFloat(item.total)
-
+        descuentoTotal = descuentoTotal + parseFloat(item.descuento)
         $("#tbProducto tbody").append(
             $("<tr>").append(
                 $("<td>").append(
@@ -223,16 +224,17 @@ function mostrarProducto_Precios() {
                 $("<td>").text(item.descripcionProducto),
                 $("<td>").text(item.cantidad),
                 $("<td>").text(item.precio),
-                $("<td>").text(item.descuento + "%"),
+                $("<td>").text(item.descuento),
                 $("<td>").text(item.total)
             )
         )
     })
-    
+    descuentoTotal = descuentoTotal;
     subtotal = total / (1 + porcentaje);
     igv = total - subtotal;
     total = subtotal + igv;
 
+    $("#txtDescuento").val(descuentoTotal.toFixed(2))
     $("#txtSubTotal").val(subtotal.toFixed(2))
     $("#txtIGV").val(igv.toFixed(2))
     $("#txtTotal").val(total.toFixed(2))
@@ -267,6 +269,7 @@ $("#btnTerminarVenta").click(function () {
     const venta = {
         idTipoDocumentoVenta: $("#cboTipoDocumentoVenta").val(),
         idCliente: idCliente,
+        descuento: $("#txtDescuento").val(),
         subTotal: $("#txtSubTotal").val(),
         impuestoTotal: $("#txtIGV").val(),
         total: $("#txtTotal").val(),
@@ -274,7 +277,7 @@ $("#btnTerminarVenta").click(function () {
     }
 
     $("#btnTerminarVenta").LoadingOverlay("show");
-
+    console.log("los datos on:", venta)
     fetch("/Venta/RegistrarVenta", {
         method: "POST",
         headers: { "Content-Type": "application/json; charset=utf-8" },

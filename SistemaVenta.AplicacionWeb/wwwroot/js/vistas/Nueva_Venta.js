@@ -30,15 +30,17 @@ $(document).ready(function () {
         language: {
             url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
         },
+        pageLength: 1
     });
 
     $('#tbdata tbody').on('click', '.selector', function () {
-
+        console.log("entre")
         idCliente = $(this).data('id');
         var isChecked = $(this).prop('checked');
 
         if (!isChecked) {
             idCliente = null;
+            console.log("Soy null")
         }
         
     });
@@ -261,8 +263,7 @@ $("#btnTerminarVenta").click(function () {
 
     const venta = {
         idTipoDocumentoVenta: $("#cboTipoDocumentoVenta").val(),
-        documentoCliente: $("#txtDocumentoCliente").val(),
-        nombreCliente: $("#txtNombreCliente").val(),
+        idCliente: idCliente,
         subTotal: $("#txtSubTotal").val(),
         impuestoTotal: $("#txtIGV").val(),
         total: $("#txtTotal").val(),
@@ -286,8 +287,7 @@ $("#btnTerminarVenta").click(function () {
                 ProductosParaVenta = [];
                 mostrarProducto_Precios();
 
-                $("#txtDocumentoCliente").val("")
-                $("#txtNombreCliente").val("")
+                
                 $("#cboTipoDocumentoVenta").val($("#cboTipoDocumentoVenta option:first").val())
 
                 swal("Registrado!", `Numero Venta : ${responseJson.objeto.numeroVenta}`, "success")

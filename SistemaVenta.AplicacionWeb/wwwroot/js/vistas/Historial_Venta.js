@@ -74,13 +74,13 @@ $("#btnBuscar").click(function () {
             $("#tbventa tbody").html("");
 
             if (responseJson.length > 0) {
-
+                
                 responseJson.forEach((venta) => {
 
                     $("#tbventa tbody").append(
                         $("<tr>").append(
                             $("<td>").text(venta.fechaRegistro),
-                            $("<td>").text("AQUI VA EL ID"),
+                            $("<td>").text(venta.idCliente),
                             $("<td>").text(venta.numeroVenta),
                             $("<td>").text(venta.tipoDocumentoVenta),
                             //$("<td>").text(venta.documentoCliente),
@@ -133,6 +133,7 @@ $("#tbventa tbody").on("click", ".btn-info", function () {
     })
 
     $("#linkImprimir").attr("href", `/Venta/MostrarPDFVenta?numeroVenta=${d.numeroVenta}`)
+    $("#linkFacturar").attr("href", `/Facturacion/Index?numeroVenta=${d.numeroVenta}`)
 
     $("#modalData").modal("show");
 

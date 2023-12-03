@@ -173,7 +173,11 @@ $("#btnGuardar").click(function () {
     modelo["stock"] = $("#txtStock").val()
     modelo["precio"] = $("#txtPrecio").val()
     modelo["esActivo"] = $("#cboEstado").val()
-    /*NUEVOS CAMPOS*/
+
+    var valorUMSeleccionado = $("#cboUnidadMedida").val();
+    modelo["unidadMedida"] = unidadDeMedidaMap.has(valorUMSeleccionado)
+        ? unidadDeMedidaMap.get(valorUMSeleccionado)
+        : (console.error("El valor seleccionado no está mapeado en el Map."), null);
     modelo["unidadMedidaSat"] = $("#cboUnidadMedida").val()
     modelo["claveProductoSat"] = $("#cboClaveProductoSat").val()
     modelo["objetoImpuesto"] = $("#cboObjetoImpuesto").val()
@@ -215,6 +219,7 @@ $("#btnGuardar").click(function () {
                 }
             })
     } else {
+        console.log("voy a editar", modelo)
         fetch("/Producto/Editar", {
             method: "PUT",
             body: formData
@@ -226,7 +231,7 @@ $("#btnGuardar").click(function () {
             .then(responseJson => {
 
                 if (responseJson.estado) {
-
+                    
                     tablaData.row(filaSeleccionada).data(responseJson.objeto).draw(false);
                     filaSeleccionada = null;
                     $("#modalData").modal("hide")

@@ -90,6 +90,16 @@ namespace SistemaVenta.BLL.Implementacion
                 producto_para_editar.Precio = entidad.Precio;
                 producto_para_editar.EsActivo = entidad.EsActivo;
 
+                producto_para_editar.unidadMedida = entidad.unidadMedida;
+                producto_para_editar.unidadMedidaSat = entidad.unidadMedidaSat;
+                producto_para_editar.claveProductoSat = entidad.claveProductoSat;
+                producto_para_editar.objetoImpuesto = entidad.objetoImpuesto;
+                producto_para_editar.factorImpuesto = entidad.factorImpuesto;
+                producto_para_editar.impuesto = entidad.impuesto;
+                producto_para_editar.valorImpuesto = entidad.valorImpuesto;
+                producto_para_editar.tipoImpuesto = entidad.tipoImpuesto;
+                producto_para_editar.descuento = entidad.descuento;
+
                 if (producto_para_editar.NombreImagen == "")
                 {
                     producto_para_editar.NombreImagen = NombreImagen;

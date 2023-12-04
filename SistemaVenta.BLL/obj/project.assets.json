@@ -6658,7 +6658,7 @@
       "projectName": "SistemaVenta.BLL",
       "projectPath": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj",
       "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\obj\\",
+      "outputPath": "C:\\Users\\diego\\Source\\Repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

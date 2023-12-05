@@ -161,7 +161,7 @@ $(document).ready(function () {
                         // Aquí se solicitaría el XML
                         let xmlGenerado = generarXML(datos);
                         console.log(xmlGenerado);
-
+                        webService(xmlGenerado)
                         // Crear un blob con el contenido del XML
                         const blob = new Blob([xmlGenerado], { type: 'text/xml' });
 
@@ -177,7 +177,7 @@ $(document).ready(function () {
                         // Liberar el objeto URL
                         window.URL.revokeObjectURL(url);
 
-                        location.reload();
+                        /*location.reload();*/
                     } catch (error) {
                         console.error(error);
                         // Manejar errores según sea necesario
@@ -310,4 +310,38 @@ function generarXML(datos) {
     xml += `</Comprobante>`;
 
     return xml;
+}
+
+
+
+function webService(xmlGenerado) {
+    console.log("Llamando a web service!");
+
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://ws.urbansa.com/app/timbrado.asmx";
+    var soapRequest =
+        '<?xml version="1.0" encoding="utf-8"?>' +
+        '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
+        '  <soap:Body>' +
+        '    <TimbrarF xmlns="http://ws.urbansa.com/">' +
+        '      <Usuario>FIME</Usuario>' +
+        '      <Password>s9%4ns7q#eGq</Password>' +
+        '      <StrXml>' + xmlGenerado + '</StrXml>' +
+        '    </TimbrarF>' +
+        '  </soap:Body>' +
+        '</soap:Envelope>';
+
+    xmlhttp.open('POST', url, true);
+    xmlhttp.setRequestHeader('Content-Type', 'text/xml');
+    xmlhttp.setRequestHeader('SOAPAction', 'http://ws.urbansa.com/TimbrarF');
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4) {
+            if (xmlhttp.status == 200) {
+                var response = xmlhttp.responseXML;
+                // Aquí puedes manejar la respuesta del servicio web
+                console.log(response);
+            }
+        }
+    }
+    xmlhttp.send(soapRequest);
 }

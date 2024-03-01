@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+5LEvkcRWih79T+qxBOIcH0TFLX7W2vz+6N7Ag3PfM8=",
+  "Hash": "S0rTN/bso2wZkyjqarKbfhULnV3pQOTsfYdCkoxu43g=",
   "Source": "SistemaVenta.AplicacionWeb",
   "BasePath": "_content/SistemaVenta.AplicacionWeb",
   "Mode": "Default",
@@ -338,23 +338,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\vistas\\datatables-demo.js"
-    },
-    {
-      "Identity": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\wwwroot\\js\\vistas\\Facturacion.js",
-      "SourceId": "SistemaVenta.AplicacionWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\wwwroot\\",
-      "BasePath": "_content/SistemaVenta.AplicacionWeb",
-      "RelativePath": "js/vistas/Facturacion.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\vistas\\Facturacion.js"
     },
     {
       "Identity": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\wwwroot\\js\\vistas\\Historial_Venta.js",

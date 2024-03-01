@@ -1,23 +1,18 @@
 using SistemaVenta.AplicacionWeb.Utilidades.Automapper;
+
 using SistemaVenta.IOC;
+
+
 using SistemaVenta.AplicacionWeb.Utilidades.Extensiones;
 using DinkToPdf;
 using DinkToPdf.Contracts;
+
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-// Agrega CORS a los servicios
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("MyPolicy",
-        builder => builder.AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader());
-});
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option =>
@@ -26,7 +21,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
     });
 
+
 builder.Services.InyectarDependencia(builder.Configuration);
+
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
 var context = new CustomAssemblyLoadContext();
@@ -44,10 +41,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// Habilita CORS en la aplicación
-app.UseCors("MyPolicy");
-
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(

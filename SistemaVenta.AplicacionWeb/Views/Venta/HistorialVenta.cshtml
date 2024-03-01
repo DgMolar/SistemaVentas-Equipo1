@@ -49,9 +49,8 @@
                         <thead>
                             <tr>
                                 <th>Fecha Registro</th>
-                                
+                                <th>Cliente ID</th>
                                 <th>Numero Venta</th>
-                                <th>ID Usuario</th>
                                 <th>Tipo Documento</th>
                                 <th>Total</th>
                                 <th></th>
@@ -99,14 +98,14 @@
                                         <label for="txtTipoDocumento">Tipo Documento</label>
                                         <input type="text" class="form-control form-control-sm" id="txtTipoDocumento" disabled>
                                     </div>
-                                <div class="form-group col-sm-8">
-                                    <label for="txtCliente">Descuento</label>
+                                <div class="form-group col-sm-4">
+                                    <label for="txtCliente">Cliente</label>
                                     <input type="text" class="form-control form-control-sm" id="txtCliente" disabled>
                                 </div>
-                                @* <div class="form-group col-sm-4">
+                                <div class="form-group col-sm-4">
                                     <label for="txtRFC">RFC:</label>
                                     <input type="text" class="form-control form-control-sm" id="txtRFC" disabled>
-                                </div> *@
+                                </div>
                                    
                                 </div>
                                 <div class="form-row">
@@ -144,7 +143,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                
+                <button type="button" class="btn btn-info btn-sm" id="linkFacturar">Solicitar Factura</button>
                     <a href="#" class="btn btn-primary btn-sm" target="_blank" id="linkImprimir">Imprimir</a>
                     <button class="btn btn-danger btn-sm" type="button" data-dismiss="modal">Cerrar</button>
                 </div>

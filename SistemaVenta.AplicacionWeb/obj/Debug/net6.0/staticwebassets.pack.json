@@ -61,10 +61,6 @@
       "PackagePath": "staticwebassets\\js\\vistas\\DashBoard_Index.js"
     },
     {
-      "Id": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\wwwroot\\js\\vistas\\Facturacion.js",
-      "PackagePath": "staticwebassets\\js\\vistas\\Facturacion.js"
-    },
-    {
       "Id": "C:\\Users\\diego\\source\\repos\\DgMolar\\SistemaVentas-Equipo1\\SistemaVenta.AplicacionWeb\\wwwroot\\js\\vistas\\Historial_Venta.js",
       "PackagePath": "staticwebassets\\js\\vistas\\Historial_Venta.js"
     },

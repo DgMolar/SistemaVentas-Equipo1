@@ -84,8 +84,9 @@ $("#btnBuscar").click(function () {
                     $("#tbventa tbody").append(
                         $("<tr>").append(
                             $("<td>").text(venta.fechaRegistro),
-                            $("<td>").text(venta.idCliente),
+                            
                             $("<td>").text(venta.numeroVenta),
+                            $("<td>").text(venta.idUsuario),
                             $("<td>").text(venta.tipoDocumentoVenta),
                             //$("<td>").text(venta.documentoCliente),
                             //$("<td>").text(venta.nombreCliente),
@@ -124,8 +125,8 @@ $("#tbventa tbody").on("click", ".btn-info", function () {
             $("#txtNumVenta").val(d.numeroVenta)
             $("#txtUsuarioRegistro").val(d.usuario)
             $("#txtTipoDocumento").val(d.tipoDocumentoVenta)
-            $("#txtCliente").val(cliente.nombre)
-            $("#txtRFC").val(cliente.rfc)
+            $("#txtCliente").val(d.descuento)
+            //$("#txtRFC").val(cliente.rfc)
             $("#txtSubTotal").val(d.subTotal)
             $("#txtIGV").val(d.impuestoTotal)
             $("#txtTotal").val(d.total)
@@ -136,7 +137,7 @@ $("#tbventa tbody").on("click", ".btn-info", function () {
 
                 $("#tbProductos tbody").append(
                     $("<tr>").append(
-                        $("<td>").text(item.idProducto + "-" + item.descripcionProducto),
+                        $("<td>").text(item.descripcionProducto),
                         $("<td>").text(item.cantidad),
                         $("<td>").text(item.precio),
                         $("<td>").text(item.total),
@@ -147,94 +148,94 @@ $("#tbventa tbody").on("click", ".btn-info", function () {
 
             /*$("#linkFacturar").attr("href", `/Facturacion/Index?numeroVenta=${d.numeroVenta}`)*/
 
-            document.getElementById("linkFacturar").addEventListener("click", async () => {
-                let datos = "";
-                try {
-                    await obtenerInfoNegocio(); // Asumiendo que esta función devuelve la info del negocio
+            //document.getElementById("linkFacturar").addEventListener("click", async () => {
+            //    let datos = "";
+            //    try {
+            //        await obtenerInfoNegocio(); // Asumiendo que esta función devuelve la info del negocio
 
-                    datos = {
-                        Venta: {
-                        idLocal: d.numeroVenta,
-                        version: "4.0",
-                        serie: "A",
-                        folio: "01",
-                        formaPago: "01",
-                        subTotal: d.subTotal,
-                        descuento: d.descuento,
-                        moneda: negocioData.simboloMoneda,
-                        tipoCambio: "1.0",
-                        total: d.total,
-                        tipoDeComprobante: "I",
-                        metodoPago: "PUE",
-                        lugarExpedicion: negocioData.direccion,
-                        regimenFiscal: negocioData.telefono,
-                        rfc: dataCliente.rfc,
-                        nombre: dataCliente.nombre,
-                        domicilioFiscalReceptor: dataCliente.domicilioFiscalReceptor,
-                        regimenFiscalReceptor: dataCliente.regimenFiscalReceptor,
-                        usoCFDI:"G01"
+            //        datos = {
+            //            Venta: {
+            //            idLocal: d.numeroVenta,
+            //            version: "4.0",
+            //            serie: "A",
+            //            folio: "01",
+            //            formaPago: "01",
+            //            subTotal: d.subTotal,
+            //            descuento: d.descuento,
+            //            moneda: negocioData.simboloMoneda,
+            //            tipoCambio: "1.0",
+            //            total: d.total,
+            //            tipoDeComprobante: "I",
+            //            metodoPago: "PUE",
+            //            lugarExpedicion: negocioData.direccion,
+            //            regimenFiscal: negocioData.telefono,
+            //            rfc: dataCliente.rfc,
+            //            nombre: dataCliente.nombre,
+            //            domicilioFiscalReceptor: dataCliente.domicilioFiscalReceptor,
+            //            regimenFiscalReceptor: dataCliente.regimenFiscalReceptor,
+            //            usoCFDI:"G01"
 
-                    },
-                        DetalleVenta: [],
-                        totalImporteTranslado: "0"
-                    };
+            //        },
+            //            DetalleVenta: [],
+            //            totalImporteTranslado: "0"
+            //        };
 
-                    await Promise.all(
-                        d.detalleVenta.map(async detalle => {
+            //        await Promise.all(
+            //            d.detalleVenta.map(async detalle => {
 
-                            const productoData = await buscarProducto(detalle.idProducto);
-                            const detalleVenta = {
-                                claveProdServ: productoData.claveProductoSat,
-                                noIdentificacion: detalle.idProducto.toString(),
-                                cantidad: detalle.cantidad.toString(),
-                                claveUnidad: productoData.unidadMedidaSat,
-                                unidad: productoData.unidadMedida,
-                                descripcion: detalle.descripcionProducto,
-                                valorUnitario: detalle.precio.toString(),
-                                importe: (detalle.cantidad * detalle.precio).toString(),
-                                objetoImp: productoData.objetoImpuesto,
-                                base: (detalle.cantidad * detalle.precio).toString(),
-                                impuesto: productoData.impuesto,
-                                tipoFactor: productoData.factorImpuesto,
-                                tasaOCuota: productoData.valorImpuesto,
-                                importeTranslado: (((detalle.cantidad * detalle.precio) * productoData.valorImpuesto) / 100).toString(),
-                            };
+            //                const productoData = await buscarProducto(detalle.idProducto);
+            //                const detalleVenta = {
+            //                    claveProdServ: productoData.claveProductoSat,
+            //                    noIdentificacion: detalle.idProducto.toString(),
+            //                    cantidad: detalle.cantidad.toString(),
+            //                    claveUnidad: productoData.unidadMedidaSat,
+            //                    unidad: productoData.unidadMedida,
+            //                    descripcion: detalle.descripcionProducto,
+            //                    valorUnitario: detalle.precio.toString(),
+            //                    importe: (detalle.cantidad * detalle.precio).toString(),
+            //                    objetoImp: productoData.objetoImpuesto,
+            //                    base: (detalle.cantidad * detalle.precio).toString(),
+            //                    impuesto: productoData.impuesto,
+            //                    tipoFactor: productoData.factorImpuesto,
+            //                    tasaOCuota: productoData.valorImpuesto,
+            //                    importeTranslado: (((detalle.cantidad * detalle.precio) * productoData.valorImpuesto) / 100).toString(),
+            //                };
                             
-                            datos.DetalleVenta.push(detalleVenta);
-                        })
-                    );
-                    const totalImporteTranslado = datos.DetalleVenta.reduce((total, detalle) => {
-                        return total + parseFloat(detalle.importeTranslado);
-                    }, 0);
+            //                datos.DetalleVenta.push(detalleVenta);
+            //            })
+            //        );
+            //        const totalImporteTranslado = datos.DetalleVenta.reduce((total, detalle) => {
+            //            return total + parseFloat(detalle.importeTranslado);
+            //        }, 0);
 
-                    // Asignamos el total al campo correspondiente en datos.Venta
-                    console.log(totalImporteTranslado)
-                    datos.totalImporteTranslado = totalImporteTranslado.toString();
-                    // Aquí se solicitaría el XML
-                    let xmlGenerado = generarXML(datos);
-                    console.log(xmlGenerado);
+            //        // Asignamos el total al campo correspondiente en datos.Venta
+            //        console.log(totalImporteTranslado)
+            //        datos.totalImporteTranslado = totalImporteTranslado.toString();
+            //        // Aquí se solicitaría el XML
+            //        let xmlGenerado = generarXML(datos);
+            //        console.log(xmlGenerado);
                     
-                    // Crear un blob con el contenido del XML
-                    const blob = new Blob([xmlGenerado], { type: 'text/xml' });
+            //        // Crear un blob con el contenido del XML
+            //        const blob = new Blob([xmlGenerado], { type: 'text/xml' });
 
-                    // Crear un objeto URL para el blob
-                    const url = window.URL.createObjectURL(blob);
+            //        // Crear un objeto URL para el blob
+            //        const url = window.URL.createObjectURL(blob);
 
-                    // Crear un elemento de ancla para descargar el archivo
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = 'factura.xml'; // Nombre del archivo a descargar
-                    a.click();
+            //        // Crear un elemento de ancla para descargar el archivo
+            //        const a = document.createElement('a');
+            //        a.href = url;
+            //        a.download = 'factura.xml'; // Nombre del archivo a descargar
+            //        a.click();
 
-                    // Liberar el objeto URL
-                    window.URL.revokeObjectURL(url);
+            //        // Liberar el objeto URL
+            //        window.URL.revokeObjectURL(url);
 
-                    location.reload();
-                } catch (error) {
-                    console.error(error);
-                    // Manejar errores según sea necesario
-                }
-            });
+            //        location.reload();
+            //    } catch (error) {
+            //        console.error(error);
+            //        // Manejar errores según sea necesario
+            //    }
+            //});
 
 
             //document.getElementById("linkFacturar").addEventListener("click", () => {
